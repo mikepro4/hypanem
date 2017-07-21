@@ -6,23 +6,26 @@ import Home from './Home';
 import Trends from './Trends';
 
 class App extends Component {
-  render() {
-    console.log(this.props)
-    this.props.history.listen(location => {
-      if (location.pathname !== this.props.location.pathname) {
-        this.props.location.pathname = location.pathname;
-        this.forceUpdate();
-      }
-    });
+  componentDidMount() {
+    //Programmatic navigation
+    this.props.history.push('/trends')
+  }
 
+  render() {
+    const { match, location, history, title } = this.props
     return(
         <div>
           <header>
+            <div>You are now at {location.pathname}</div>
+            <div>Title is: {title}</div>
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/trends">Trends</Link></li>
             </ul>
           </header>
+
+          <div onClick={() => this.props.updateAppTitlte('test')}>test button</div>
+
           <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/trends" component={Trends} />
