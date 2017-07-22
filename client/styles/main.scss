@@ -2,11 +2,6 @@
 @import '../../../node_modules/@blueprintjs/core/dist/blueprint.css';
 @import '../../../node_modules/@blueprintjs/core/dist/variables.scss';
 
-//imports
-@import './imports/fonts';
-@import './imports/reset';
-@import './imports/scrollbars';
-
 $blue1: #4AB7FF;
 $blue2: #039AFF;
 $blue3: #0088E3;
@@ -18,6 +13,15 @@ $red2: #FF2017;
 $red3: #F01D16;
 $red4: #D41913;
 $red5: #96120E;
+
+//imports
+@import './imports/fonts';
+@import './imports/reset';
+@import './imports/scrollbars';
+
+//components
+@import '../components/App';
+@import '../components/App_header';
 
 body {
   background: $white;

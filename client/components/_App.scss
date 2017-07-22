@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  overflow: hidden;
+  height: 100%;
+
+  .app-content {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+}
