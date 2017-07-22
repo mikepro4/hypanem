@@ -1,0 +1,65 @@
+// UI KIT
+@import '../../../node_modules/@blueprintjs/core/dist/blueprint.css';
+@import '../../../node_modules/@blueprintjs/core/dist/variables.scss';
+
+//imports
+@import './imports/fonts';
+@import './imports/reset';
+@import './imports/scrollbars';
+
+$blue1: #4AB7FF;
+$blue2: #039AFF;
+$blue3: #0088E3;
+$blue4: #027AC9;
+$blue5: #025E9C;
+
+$red1: #FF6E69;
+$red2: #FF2017;
+$red3: #F01D16;
+$red4: #D41913;
+$red5: #96120E;
+
+body {
+  background: $white;
+  color: $dark-gray5;
+  font-family: 'G', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'G', sans-serif;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $blue2;
+  text-decoration: none;
+  transition: color .15s ease-in-out;
+}
+
+a:hover {
+  color: $blue4;
+  text-decoration: none;
+}
+
+a:active {
+  color: $blue5;
+  text-decoration: none;
+}
+
+.app_container {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+}

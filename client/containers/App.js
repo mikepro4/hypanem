@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateAppTitlte } from '../actions/app'
+import { updateAppTitle } from '../actions/app'
 
 import App from '../components/App';
 
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    updateAppTitlte
+    updateAppTitle
   }, dispatch);
 }
 

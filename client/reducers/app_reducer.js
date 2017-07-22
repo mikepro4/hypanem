@@ -5,8 +5,7 @@ import {
 export default (state = {title: 'lol'}, action) => {
   switch (action.type) {
     case SET_TITLE_SUCCESS:
-      console.log('set title successfully')
-      return  {...state,
+      return {...state,
         title: action.payload,
       }
     default:

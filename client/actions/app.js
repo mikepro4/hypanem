@@ -2,7 +2,7 @@ import {
   SET_TITLE_SUCCESS,
 } from './types'
 
-export function updateAppTitlte(title) {
+export function updateAppTitle(title) {
   return {
     type: SET_TITLE_SUCCESS,
     payload: title

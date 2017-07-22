@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import DevTools from './DevTools'
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Button, FocusStyleManager } from "@blueprintjs/core";
 
 import Home from './Home';
 import Trends from './Trends';
+
+FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +18,9 @@ class App extends Component {
     const { match, location, history, title } = this.props
     return(
         <div>
+          <Button text="Click to show Omnibox" />
+          <span className="pt-icon-standard pt-icon-trash"/>
+
           <header>
             <div>You are now at {location.pathname}</div>
             <div>Title is: {title}</div>
@@ -24,7 +30,7 @@ class App extends Component {
             </ul>
           </header>
 
-          <div onClick={() => this.props.updateAppTitlte('test')}>test button</div>
+          <div onClick={() => this.props.updateAppTitle('test')}>test button</div>
 
           <Switch>
             <Route path="/" exact component={Home}/>
