@@ -8,7 +8,7 @@ class AppHeader extends Component {
   }
 
   render() {
-    let menu = {
+    let mainMenu = {
         name: "app-header-menu",
         orientation: "horizontal",
         links: [
@@ -40,18 +40,39 @@ class AppHeader extends Component {
         ]
       }
 
+    let authMenu = {
+      name: "auth-menu",
+      orientation: "horizontal",
+      links: [
+        {
+          to: "/auth/signin",
+          title: "Войти",
+        },
+        {
+          to: "/auth/signup",
+          title: "Зарегистрироваться",
+        },
+      ]
+    }
+
     return(
         <header className="app-header">
-          <div className="app-logo-container">
-            <NavLink
-              to='/home'
-              title="Hype DNA"
-              className="app-logo"
-              >
-              HYPEDNA
-            </NavLink>
+          <div className="left-side">
+            <div className="app-logo-container">
+              <NavLink
+                to='/home'
+                title="Hype DNA"
+                className="app-logo"
+                >
+                HYPEDNA
+              </NavLink>
+            </div>
+            <Menu menu={mainMenu}  />
           </div>
-          <Menu menu={menu}  />
+
+          <div className="right-side">
+            <Menu menu={authMenu}  />
+          </div>
         </header>
     );
   }

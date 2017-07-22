@@ -24,7 +24,7 @@ export default class NavLinkComponent extends Component {
           className={linkClasses}
           activeClassName='active'
           >
-            <span className={iconClasses}></span>
+            {icon ? <span className={iconClasses}></span> : "" }
             <span className="link_title">{title}</span>
             {value ? <div className="link_value_wrapper"><span className="link_value">{value}</span></div> : ''}
             {notification ? <span className="notificiation_icon"></span> : ''}
