@@ -11,8 +11,7 @@ FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends Component {
   componentDidMount() {
-    //Programmatic navigation
-    // this.props.history.push('/trends')
+    this.props.history.push('/home')
   }
 
   render() {
@@ -20,11 +19,12 @@ class App extends Component {
     return(
         <div className="app">
 
-          <AppHeader />
+          <AppHeader {...this.props} />
 
           <div className="app-content">
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/home" exact component={Home} />
               <Route path="/trends" component={Trends} />
             </Switch>
           </div>
