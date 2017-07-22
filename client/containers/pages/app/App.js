@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateAppTitle } from '../actions/app'
+import { updateAppTitle } from '../../../actions/app'
 
-import App from '../components/App';
+import App from '../../../components/pages/app/App';
 
 function mapStateToProps(state) {
   return {

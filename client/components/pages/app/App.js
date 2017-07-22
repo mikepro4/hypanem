@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import DevTools from './DevTools'
+import DevTools from '../../DevTools'
 import { Button, FocusStyleManager } from "@blueprintjs/core";
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
-import Home from './Home';
-import Trends from './Trends';
-import AppHeader from '../containers/App_header';
+import Home from '../home/Home';
+import Trends from '../trends/Trends';
+import AppHeader from '../../../containers/pages/app/App_header';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 

@@ -1,8 +1,7 @@
 import * as React from 'react';
-
-import App from './containers/App';
-import Home from './components/Home';
 import { Route } from 'react-router';
+
+import App from './containers/pages/app/App';
 
 export default (
   <Route path="/">

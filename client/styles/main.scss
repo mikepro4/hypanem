@@ -19,9 +19,13 @@ $red5: #96120E;
 @import './imports/reset';
 @import './imports/scrollbars';
 
-//components
-@import '../components/App';
-@import '../components/App_header';
+//common
+@import '../components/common/Nav_link';
+
+//pages
+@import '../components/pages/app/App';
+@import '../components/pages/app/App_header';
+
 
 body {
   background: $white;

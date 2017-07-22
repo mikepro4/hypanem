@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import AppHeader from '../components/App_header';
+import AppHeader from '../../../components/pages/app/App_header';
 
 function mapStateToProps(state) {
   return {
