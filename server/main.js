@@ -1,6 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import Videos from '../collections/videos'
 
+import registerAuthPublications from './publications/auth';
+import getUserDataFactory from './methods/user/getUserData';
+
+registerAuthPublications(getUserDataFactory(Meteor.users));
+
 Meteor.startup(() => {
   console.log('server lol')
 

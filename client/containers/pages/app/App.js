@@ -6,7 +6,8 @@ import App from '../../../components/pages/app/App';
 
 function mapStateToProps(state) {
   return {
-    title: state.app.title
+    title: state.app.title,
+    auth: state.auth
   };
 }
 

@@ -12,16 +12,33 @@ import rootReducer from './reducers/index';
 import DevTools from './components/DevTools';
 import Routes from './routes'
 
+import meteorDatasource from './middlewares/meteorDatasource';
+import meteorSubscription from './middlewares/meteorSubscription';
+import meteorMethod from './middlewares/meteorMethod';
+import { meteorInsert, meteorUpdate, meteorRemove } from './middlewares/meteorCrud';
+
+import { newSuccessNotification, newErrorNotification } from './actions/notifications';
+
+import { loadUser } from './actions/auth';
+
 const logger = createLogger();
 const history = createBrowserHistory();
 const middleware = routerMiddleware(history);
 
 const enhancers = [
-  applyMiddleware(middleware, ReduxThunk, logger),
+  applyMiddleware(middleware, ReduxThunk, logger,
+    meteorSubscription,
+    meteorDatasource,
+    meteorMethod(newSuccessNotification, newErrorNotification),
+    meteorInsert(newSuccessNotification, newErrorNotification),
+    meteorUpdate(newSuccessNotification, newErrorNotification),
+    meteorRemove(newSuccessNotification, newErrorNotification)
+  ),
   DevTools.instrument()
 ];
 
 const store = createStore(rootReducer, {}, compose(...enhancers));
+store.dispatch(loadUser());
 
 Meteor.startup(() => {
   render(

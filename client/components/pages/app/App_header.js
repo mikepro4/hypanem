@@ -56,11 +56,6 @@ class AppHeader extends Component {
       ]
     }
 
-    const user = Meteor.user()
-    if (user) {
-      console.log(user.username)
-    }
-
     return(
         <header className="pt-navbar pt-dark app-header">
           <div className="left-side">
@@ -82,7 +77,7 @@ class AppHeader extends Component {
           </div>
 
           <div className="right-side">
-            {user ? user.username: <Menu menu={authMenu}  /> }
+            {this.props.auth.user ? this.props.auth.user.username : <Menu menu={authMenu}  /> }
           </div>
         </header>
     );
