@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Route, Link, Switch, Redirect, NavLink } from 'react-router-dom';
 import { Button, Input } from "@blueprintjs/core";
 import Menu from '../../common/menu/Menu'
+import UserHeader from './User_header'
 
 class AppHeader extends Component {
   componentDidMount() {
@@ -77,12 +78,7 @@ class AppHeader extends Component {
           </div>
 
           <div className="right-side">
-            {this.props.auth.user ? <div>
-              {this.props.auth.user.username}
-              <NavLink to='/auth/signout'>
-                Выйти
-              </NavLink>
-            </div>: <Menu menu={authMenu}  /> }
+            {this.props.auth.user ? <UserHeader {...this.props}/> : <Menu menu={authMenu}  /> }
           </div>
         </header>
     );
