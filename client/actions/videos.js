@@ -1,14 +1,16 @@
 import actionTypeBuilder from './actionTypeBuilder';
 import { newErrorNotification } from './notifications';
 
+import { Videos } from '../../collections/videos';
+
 export const VIDEOS = actionTypeBuilder.type('VIDEOS');
 export const VIDEOS_REMOVE = actionTypeBuilder.type('VIDEOS_REMOVE');
 export const VIDEOS_INSERT = actionTypeBuilder.type('VIDEOS_INSERT');
 export const VIDEOS_UPDATE = actionTypeBuilder.type('VIDEOS_UPDATE');
 
-export function loadVideosFactory(videoCollection) {
+export function loadVideosFactory() {
   return () => {
-    const finalUserId = Meteor.userId(); // Override with current user if not specified
+    const finalUserId = Meteor.userId();
     return dispatch => {
       dispatch({
         type: VIDEOS,
@@ -20,14 +22,14 @@ export function loadVideosFactory(videoCollection) {
               }
             },
           }),
-          get: () => videoCollection.findByUser(finalUserId).fetch(),
+          get: () => Videos.findByUser(finalUserId).fetch(),
         },
       });
     };
   };
 }
 
-export function deleteVideoFactory(collection) {
+export function deleteVideoFactory() {
   return id => {
     return dispatch => {
       dispatch({
@@ -35,7 +37,7 @@ export function deleteVideoFactory(collection) {
         meteor: {
           remove: {
             id,
-            collection,
+            collection: Videos,
           },
         },
       });
@@ -47,6 +49,7 @@ export function deleteVideoFactory(collection) {
 export function newVideoFactory(collection) {
   return (url, date) => {
     return dispatch => {
+
       dispatch({
         type: VIDEOS_INSERT,
         meteor: {
@@ -55,7 +58,7 @@ export function newVideoFactory(collection) {
               date,
               url,
             },
-            collection,
+            collection: Videos,
           },
         },
       });
@@ -64,8 +67,9 @@ export function newVideoFactory(collection) {
 }
 
 // bullshit
-export function updateVideoFactory(collection) {
+export function updateVideoFactory() {
   return (id, date) => {
+
     return dispatch => {
       dispatch({
         type: VIDEOS_UPDATE,
@@ -77,7 +81,7 @@ export function updateVideoFactory(collection) {
                 date: moment(date).toDate(),
               },
             },
-            collection,
+            collection: Videos,
           },
         },
       });
