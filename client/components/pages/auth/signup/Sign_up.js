@@ -5,10 +5,11 @@ import Helmet from 'react-helmet';
 import classnames from 'classnames'
 import SignUpForm from './Sign_up_form'
 
-export default class SignIn extends React.Component {
-  handleFormSubmit({ email, password }) {
+export default class SignUp extends React.Component {
+  handleFormSubmit({ email, password, username }) {
+    console.log({ email, password, username })
     console.log('submit')
-    // this.props.dispatch(signinUser({ email, password }))
+    this.props.signUpAction({ email, password, username })
   }
 
   renderAlert() {
@@ -22,6 +23,7 @@ export default class SignIn extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     let errorClass = classnames({
       'form_error': true,
       'show': this.props.auth.error

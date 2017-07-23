@@ -11,6 +11,7 @@ class SignUpForm extends React.Component {
 
     return (
       <form onSubmit={handleSubmit} className="pt-dark pt-control-group pt-large pt-vertical">
+        <Field name="username"  component={ Input } label="Username" large={true} icon="user" ref="username" />
         <Field name="email"  component={ Input } label="Email" large={true} icon="envelope" ref="email" />
         <Field name="password"  component={ Input } label="Пароль" type="password" large={true} icon="lock" />
         <Field name="passwordConfirm"  component={ Input } label="Подтвердить пароль" type="password"  large={true} icon="lock" />
@@ -26,6 +27,10 @@ const validate = values => {
     errors.email = 'Введи email'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Неравильный email адрес'
+  }
+
+  if (!values.username) {
+    errors.username = 'Введи имя';
   }
 
   if (!values.password) {

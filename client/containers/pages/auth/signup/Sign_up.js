@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { signUpAction } from '../../../../actions/auth'
 
-import Signup from '../../../../components/pages/auth/signup/Sign_up';
+import SignUp from '../../../../components/pages/auth/signup/Sign_up';
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +13,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    signUpAction
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
