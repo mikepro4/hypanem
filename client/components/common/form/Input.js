@@ -21,7 +21,7 @@ const Input = ({ input, label, icon, large, type, meta: { touched, error } }) =>
         {icon ? <span className={`pt-icon pt-icon-${icon}`} /> : "" }
 
         <input {...input} className={ inputClassName } placeholder={label} type={type}/>
-        <div className='input_error'>{touched && error && <span>{error}</span>}</div>
+        {touched && error ? <div className='input_error'>{touched && error && <span>{error}</span>}</div> : ""}
         { touched && !error ? <div className='input_valid'>
           <span className="pt-icon pt-icon-small-tick"/>
         </div> : "" }

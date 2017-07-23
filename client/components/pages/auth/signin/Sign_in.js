@@ -33,7 +33,7 @@ export default class SignIn extends React.Component {
         <div className="form-container">
 
           <div className='form-top-section'>
-            <h1 className='form-title'>Войти</h1>
+            <h1 className='form-title'>Авторизация</h1>
             <div className={errorClass}>{this.renderAlert()}</div>
           </div>
 
