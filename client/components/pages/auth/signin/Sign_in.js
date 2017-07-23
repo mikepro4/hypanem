@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react';
 import { NavLink } from 'react-router-dom'
 import Helmet from 'react-helmet';
-// import { signinUser } from '../../../actions/auth_actions'
 import classnames from 'classnames'
 import SignInForm from './Sign_in_form'
 
 export default class SignIn extends React.Component {
   handleFormSubmit({ email, password }) {
-    console.log('submit')
-    // this.props.dispatch(signinUser({ email, password }))
+    this.props.loginWithPassword({ email, password })
   }
 
   renderAlert() {

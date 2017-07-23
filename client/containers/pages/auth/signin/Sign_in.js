@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { loginWithPassword } from '../../../../actions/auth'
 
 import Signin from '../../../../components/pages/auth/signin/Sign_in';
 
@@ -12,6 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    loginWithPassword
   }, dispatch);
 }
 

@@ -10,7 +10,9 @@ class SignInForm extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit} className="pt-dark pt-control-group pt-large pt-vertical">
+      <form onSubmit={handleSubmit} autoComplete="off" role="presentation" className="pt-dark pt-control-group pt-large pt-vertical">
+        <input type="password" className="fake-input"/>
+
         <Field name="email"  component={ Input } label="Email" large={true} icon="envelope" ref="email" />
         <Field name="password"  component={ Input } label="Пароль" type="password"  large={true} icon="lock" />
         <button action="submit" disabled={!this.props.valid} className='pt-button pt-intent-primary button_submit'>Войти</button>

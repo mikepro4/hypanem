@@ -77,7 +77,12 @@ class AppHeader extends Component {
           </div>
 
           <div className="right-side">
-            {this.props.auth.user ? this.props.auth.user.username : <Menu menu={authMenu}  /> }
+            {this.props.auth.user ? <div>
+              {this.props.auth.user.username}
+              <NavLink to='/auth/signout'>
+                Выйти
+              </NavLink>
+            </div>: <Menu menu={authMenu}  /> }
           </div>
         </header>
     );
