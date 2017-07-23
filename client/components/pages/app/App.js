@@ -10,6 +10,8 @@ import SignIn from '../../../containers/pages/auth/signin/Sign_in';
 import SignUp from '../../../containers/pages/auth/signup/Sign_up';
 import SignOut from '../../../containers/pages/auth/signout/Sign_out';
 
+import VideoAdd from '../../../containers/pages/video_add/Video_add';
+
 FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends Component {
@@ -34,6 +36,7 @@ class App extends Component {
               <Route path="/auth/signin" component={SignIn} />
               <Route path="/auth/signup" component={SignUp} />
               <Route path="/auth/signout" component={SignOut} />
+              <Route path="/add" component={VideoAdd} />
             </Switch>
           </div>
 

@@ -64,6 +64,7 @@ export default store => next => action => {
         onChange(data);
       }
 
+
       store.dispatch({
         type: actionTypeBuilder.changed(action.type),
         data,

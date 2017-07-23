@@ -1,7 +1,7 @@
 export default function(videoCollection) {
-  return (userId, ) => {
+  return (userId) => {
     return videoCollection.find({
-      userId,
+      userId
     }, {
       sort: {
         date: 1,

@@ -6,6 +6,7 @@ export function meteorInsert(newSuccessNotification, newErrorNotification) {
 
     const { collection, entity } = action.meteor.insert;
 
+
     collection.insert(entity, error => {
       if (error) {
         return store.dispatch(newErrorNotification());
