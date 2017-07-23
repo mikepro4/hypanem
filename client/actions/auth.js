@@ -24,12 +24,12 @@ export function loadUser() {
   };
 }
 
-export function loginWithPassword({email, password}) {
+export function loginWithPassword(component, {email, password}) {
   return dispatch => {
     Meteor.loginWithPassword(email, password, err => {
       if (err) {
-        // return dispatch();
-        console.log('fail')
+        component.showError(err.reason);
+        return;
       }
 
       return dispatch(push('/home'));
@@ -37,13 +37,12 @@ export function loginWithPassword({email, password}) {
   };
 }
 
-export function signUpAction({email, password, username}) {
+export function signUpAction(component, {email, password, username}) {
   return dispatch => {
     Accounts.createUser({email, password, username }, err => {
       if (err) {
-        console.log(err)
-        console.log('fail')
-        return
+        component.showError(err.reason);
+        return;
       }
       return dispatch(push('/home'));
     });

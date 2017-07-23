@@ -1,15 +1,20 @@
 import React, {PropTypes} from 'react';
 import { NavLink } from 'react-router-dom'
 import Helmet from 'react-helmet';
-// import { signinUser } from '../../../actions/auth_actions'
 import classnames from 'classnames'
 import SignUpForm from './Sign_up_form'
+import { Position, Toaster, Classes, Intent } from "@blueprintjs/core";
 
 export default class SignUp extends React.Component {
   handleFormSubmit({ email, password, username }) {
-    console.log({ email, password, username })
-    console.log('submit')
-    this.props.signUpAction({ email, password, username })
+    this.props.signUpAction(this, { email, password, username })
+  }
+
+  showError(reason) {
+    this.refs.toaster.show({
+      message: reason,
+      intent: Intent.DANGER
+    });
   }
 
   renderAlert() {
@@ -23,7 +28,6 @@ export default class SignUp extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let errorClass = classnames({
       'form_error': true,
       'show': this.props.auth.error
@@ -31,6 +35,7 @@ export default class SignUp extends React.Component {
 
     return (
       <div className="page-container page-signup">
+        <Toaster position={Position.CENTER} ref="toaster" />
         <Helmet title="Регистрация – Hype DNA" />
         <div className="form-container">
 
