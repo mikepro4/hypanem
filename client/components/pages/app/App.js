@@ -7,6 +7,7 @@ import Home from '../home/Home';
 import Trends from '../trends/Trends';
 import AppHeader from '../../../containers/pages/app/App_header';
 import SignIn from '../../../containers/pages/auth/signin/Sign_in';
+import SignUp from '../../../containers/pages/auth/signup/Sign_up';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -28,6 +29,7 @@ class App extends Component {
               <Route path="/home" exact component={Home} />
               <Route path="/trends" component={Trends} />
               <Route path="/auth/signin" component={SignIn} />
+              <Route path="/auth/signup" component={SignUp} />
             </Switch>
           </div>
 
