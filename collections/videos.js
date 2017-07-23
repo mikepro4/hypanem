@@ -1,23 +1,24 @@
-import { Mongo } from 'meteor/mongo';
-// import Watson from 'watson-developer-cloud'
+import lodash from 'lodash';
+import findByUserFactory from './videos/findByUser';
+import addUserOnInsert from './common/addUserOnInsert';
 
-Meteor.methods({
-  'videos.insert': function(formFields) {
-    return Videos.insert({
-      createdAt: new Date(),
-      content: '',
-      url: formFields.url,
-      ownerId: this.userId
-    });
+export const VideoSchema = new SimpleSchema({
+  url: {
+    type: String,
+    max: 50,
   },
-
-  'videos.remove': function(video) {
-    return Vi.remove(video);
+  date: {
+    type: Date,
   },
-
-  'videos.update': function(video, content) {
-    return Posts.update(video._id, { $set: { content } });
+  userId: {
+    type: String,
+    autoValue: function autoValue() {
+      return addUserOnInsert(this);
+    },
   },
 });
 
-export default Videos = new Mongo.Collection('videos');
+export const Videos = new Mongo.Collection('videos');
+Videos.attachSchema(VideoSchema);
+
+Videos.findByUser = findByUserFactory(Videos);
