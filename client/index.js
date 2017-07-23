@@ -7,9 +7,9 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers/index';
-import DevTools from './components/DevTools';
 import Routes from './routes'
 
 import meteorDatasource from './middlewares/meteorDatasource';
@@ -26,15 +26,14 @@ const history = createBrowserHistory();
 const middleware = routerMiddleware(history);
 
 const enhancers = [
-  applyMiddleware(middleware, ReduxThunk, logger,
+  composeWithDevTools(applyMiddleware(middleware, ReduxThunk, logger,
     meteorSubscription,
     meteorDatasource,
     meteorMethod(newSuccessNotification, newErrorNotification),
     meteorInsert(newSuccessNotification, newErrorNotification),
     meteorUpdate(newSuccessNotification, newErrorNotification),
-    meteorRemove(newSuccessNotification, newErrorNotification)
-  ),
-  DevTools.instrument()
+    meteorRemove(newSuccessNotification, newErrorNotification),
+  ))
 ];
 
 const store = createStore(rootReducer, {}, compose(...enhancers));

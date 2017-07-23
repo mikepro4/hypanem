@@ -20,17 +20,16 @@
 
     &::before {
       content: '';
-      bottom: -6px;
+      bottom: -7px;
       left: 10px;
       background: $white;
       right: 10px;
       height: 0;
       position: absolute;
-      transition: all .1s ease-in-out;
     }
 
     &.active::before {
-      height: 2px;
+      height: 1px;
     }
 
     &:hover , &.active {

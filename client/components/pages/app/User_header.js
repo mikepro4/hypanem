@@ -7,6 +7,9 @@ export default class UserHeader extends React.Component {
   handleSignout() {
     this.props.history.push('/auth/signout')
   }
+  handleSettingsClick() {
+    this.props.history.push('/auth/profile/edit')
+  }
   render() {
     let userMenu = {
       name: "auth-menu",
@@ -38,9 +41,9 @@ export default class UserHeader extends React.Component {
 
           <li className="user-header-section user-header-username">
             <Popover
-                interactionKind={PopoverInteractionKind.HOVER}
-                position={Position.BOTTOM_RIGHT}
-                inheritDarkTheme={false}
+                interactionKind={PopoverInteractionKind.CLICK}
+                position={Position.BOTTOM}
+                isModal={true}
             >
               <div className="user-container">
                 <div className="user-avatar"></div>
@@ -59,6 +62,7 @@ export default class UserHeader extends React.Component {
                   <MenuItem
                       iconName="cog"
                       text="Настройки"
+                      onClick={this.handleSettingsClick.bind(this)}
                   />
                   <MenuDivider />
                   <MenuItem

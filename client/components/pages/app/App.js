@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DevTools from '../../DevTools'
+import Helmet from 'react-helmet';
 import { Button, FocusStyleManager } from "@blueprintjs/core";
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
@@ -20,7 +20,9 @@ class App extends Component {
   render() {
     const { match, location, history, title } = this.props
     return(
-        <div className="app">
+        <div className="app pt-dark">
+
+          <Helmet title="Главная – Hype DNA" />
 
           <AppHeader {...this.props} />
 
@@ -35,7 +37,6 @@ class App extends Component {
             </Switch>
           </div>
 
-          <DevTools/>
         </div>
     );
   }
