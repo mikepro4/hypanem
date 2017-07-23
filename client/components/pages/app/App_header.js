@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Route, Link, Switch, Redirect, NavLink } from 'react-router-dom';
-import { Button } from "@blueprintjs/core";
+import { Button, Input } from "@blueprintjs/core";
 import Menu from '../../common/menu/Menu'
 
 class AppHeader extends Component {
@@ -56,7 +56,7 @@ class AppHeader extends Component {
     }
 
     return(
-        <header className="app-header">
+        <header className="pt-navbar pt-dark app-header">
           <div className="left-side">
             <div className="app-logo-container">
               <NavLink
@@ -68,6 +68,11 @@ class AppHeader extends Component {
               </NavLink>
             </div>
             <Menu menu={mainMenu}  />
+
+            <div className="pt-input-group search-wrapper">
+              <span className="pt-icon pt-icon-search"></span>
+              <input className="pt-input" type="search" placeholder="Поиск..." dir="auto" />
+            </div>
           </div>
 
           <div className="right-side">

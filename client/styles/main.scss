@@ -2,12 +2,6 @@
 @import '../../../node_modules/@blueprintjs/core/dist/blueprint.css';
 @import '../../../node_modules/@blueprintjs/core/dist/variables.scss';
 
-$blue1: #4AB7FF;
-$blue2: #039AFF;
-$blue3: #0088E3;
-$blue4: #027AC9;
-$blue5: #025E9C;
-
 $red1: #FF6E69;
 $red2: #FF2017;
 $red3: #F01D16;
@@ -25,10 +19,11 @@ $red5: #96120E;
 //pages
 @import '../components/pages/app/App';
 @import '../components/pages/app/App_header';
+@import '../components/pages/auth/signin/Sign_in';
 
 
 body {
-  background: $white;
+  background: $light-gray3;
   color: $dark-gray5;
   font-family: 'G', sans-serif;
   font-weight: 400;
@@ -70,4 +65,12 @@ a:active {
   bottom: 0;
   z-index: 1;
   overflow: hidden;
+}
+
+.page-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

@@ -6,12 +6,13 @@ import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import Home from '../home/Home';
 import Trends from '../trends/Trends';
 import AppHeader from '../../../containers/pages/app/App_header';
+import SignIn from '../../../containers/pages/auth/signin/Sign_in';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends Component {
   componentDidMount() {
-    this.props.history.push('/home')
+    // this.props.history.push('/home')
   }
 
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/home" exact component={Home} />
               <Route path="/trends" component={Trends} />
+              <Route path="/auth/signin" component={SignIn} />
             </Switch>
           </div>
 
