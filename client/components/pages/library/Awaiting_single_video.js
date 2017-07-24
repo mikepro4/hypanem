@@ -5,41 +5,17 @@ import * as _ from 'lodash'
 import AwaitingSingleVideoFormComponent from './Awaiting_single_video_form';
 
 class AwaitingSingleVideo extends Component {
+  componentDidMount() {
+    this.props.testMethod(this.props.match.params.id)
+  }
 
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //     paramId: this.props.match.params.id,
-  //   };
-  // }
-  // componentDidMount() {
-  //   this.props.loadVideo(this.state.paramId);
-  // }
-  //
-  // componentWillUpdate() {
-  //   this.props.loadVideo(this.state.paramId);
-  // }
 
   handleFormSubmit({url}) {
     this.props.updateVideo(url, this.props.match.params.id)
     this.props.history.push('/library/video/awaiting/')
   }
 
-
   render() {
-    // console.log(this.props.videos)
-    // const paramId = this.props.match.params.id
-    // let filteredVideo
-    // if(!_.isNil(this.props.videos.items)) {
-    //
-    //   const test = _.filter(this.props.videos.items, function(video) {
-    //     return (video._id === paramId) ? true : false
-    //   })
-    //   filteredVideo = test[0]
-    // }
-
-
 
     let myInitialValues = {
       initialValues: {
@@ -47,13 +23,15 @@ class AwaitingSingleVideo extends Component {
       }
     }
 
-
-
     return(
         <div className="content-container">
           <Helmet title="Тренды – Hype DNA" />
           <h3 className="section-title">Single Video</h3>
-          <AwaitingSingleVideoFormComponent {...myInitialValues} onSubmit={this.handleFormSubmit.bind(this)} />
+          <AwaitingSingleVideoFormComponent
+            {...myInitialValues}
+            enableReinitialize={true}
+            onSubmit={this.handleFormSubmit.bind(this)}
+          />
         </div>
       );
 
