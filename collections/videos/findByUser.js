@@ -4,7 +4,7 @@ export default function(videoCollection) {
       userId
     }, {
       sort: {
-        date: 1,
+        date: -1,
       },
     });
   };

@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { newVideo } from '../../../actions/videos'
+import { deleteVideoFactory } from '../../../actions/videos'
 
-import VideoAdd from '../../../components/pages/video_add/Video_add';
+import AwaitingVideos from '../../../components/pages/library/Awaiting_videos';
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
     videos: state.videos
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    newVideo
+    deleteVideoFactory
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(AwaitingVideos);

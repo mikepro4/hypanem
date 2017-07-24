@@ -12,6 +12,7 @@ import SignUp from '../../../containers/pages/auth/signup/Sign_up';
 import SignOut from '../../../containers/pages/auth/signout/Sign_out';
 
 import VideoAdd from '../../../containers/pages/video_add/Video_add';
+import Library from '../../../containers/pages/library/Library';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -42,7 +43,6 @@ class App extends Component {
 
           <Toaster position={Position.BOTTOM_LEFT} ref="toaster" />
 
-
           <Helmet title="Главная – Hype DNA" />
 
           <AppHeader {...this.props} />
@@ -56,6 +56,7 @@ class App extends Component {
               <Route path="/auth/signup" component={SignUp} />
               <Route path="/auth/signout" component={SignOut} />
               <Route path="/add" component={VideoAdd} />
+              <Route path="/library" component={Library} />
             </Switch>
           </div>
 

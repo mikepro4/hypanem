@@ -1,0 +1,127 @@
+.page-library {
+  display: flex;
+
+  .navigation-sidebar {
+    flex-shrink: 0;
+    width: 280px;
+    border-right: 1px solid $dark-gray2;
+
+    .sidebar-header {
+      display: flex;
+      padding: 20px;
+
+      .page-icon {
+        margin: 0 10px 0 0;
+        font-size: 16px;
+        position: relative;
+        top: 7px;
+      }
+
+      .page-title {
+        font-family: 'G', sans-serif;
+        font-size: 14px;
+        color: $white;
+        letter-spacing: 0.5px;
+        line-height: 34px;
+        font-weight: 400;
+      }
+    }
+
+    .sidebar-menu-container {
+      .menu-title {
+        margin: 0 0 10px 20px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        font-size: 14px;
+        font-family: 'G', sans-serif;
+      }
+
+      a.nav_link {
+        color: $gray1;
+        padding: 2px 20px 1px 20px;
+        border-radius: 0;
+        position: relative;
+
+        .link_value_wrapper {
+          position: absolute;
+          top: 9px;
+          right: 20px;
+        }
+
+        &:after {
+          position: absolute;
+          content: '';
+          top: 0;
+          width: 0;
+          bottom: 0;
+          left: 0;
+          background: $blue5;
+          transition: all .2s ease-in-out;
+        }
+
+        &:hover {
+          color: $white;
+          background: $dark-gray1;
+        }
+
+        &.active {
+          color: $blue5;
+          background: $dark-gray2;
+
+          &:after {
+            width: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .page-content {
+    flex-grow: 1;
+    overflow-y: scroll;
+
+    .content-container {
+      max-width: 800px;
+      margin: 0 auto;
+
+      h3.section-title {
+        margin: 30px 0 30px 0;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+      }
+
+      ul.video-list {
+        margin: 0 0 50px 0;
+        
+        li.video-list-item {
+          display: flex;
+          justify-content: space-between;
+          background: $dark-gray2;
+          padding: 10px;
+          margin: 0 0 1px 0;
+
+          .video-details {
+            display: flex;
+            align-items: center;
+
+            .video-avatar {
+              width: 54px;
+              background: $black;
+              height: 100%;
+              margin: 0 10px 0 0;
+            }
+            .video-description {}
+          }
+
+          ul.video-actions {
+            li.video-single-action {
+              float: left;
+              margin: 0 0 0 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,7 @@ export default class UserHeader extends React.Component {
           icon: "add",
         },
         {
-          to: "/library",
+          to: "/library/",
           title: "Мой Контент",
           icon: "folder-close",
         },
