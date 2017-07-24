@@ -1,6 +1,9 @@
 import { assign } from 'lodash';
 import actionTypeBuilder from '../actions/actionTypeBuilder';
-import { VIDEOS, VIDEOS_SINGLE_LOADED, VIDEOS_REMOVE } from '../actions/videos';
+import { VIDEOS, VIDEOS_REMOVE } from '../actions/videos';
+import {
+  VIDEOS_SINGLE_LOADED,
+} from '../actions/types'
 
 export const initialState = {
   items: [],
@@ -18,8 +21,9 @@ export default function(state = initialState, action) {
   case actionTypeBuilder.changed(VIDEOS):
     return assign({}, state, { items: data });
 
-  case actionTypeBuilder.changed(VIDEOS_SINGLE_LOADED):
-    return assign({}, state, { singleVideo: data[0] });
+  case VIDEOS_SINGLE_LOADED:
+    console.log('action worked')
+    return assign({}, state, { singleVideo: data });
 
   case actionTypeBuilder.changed(VIDEOS_REMOVE):
     return assign({}, state, { items: data });

@@ -1,4 +1,7 @@
 import { push } from 'react-router-redux'
+import {
+  VIDEOS_SINGLE_LOADED,
+} from './types'
 
 import actionTypeBuilder from './actionTypeBuilder';
 import { newErrorNotification } from './notifications';
@@ -9,7 +12,7 @@ export const VIDEOS = actionTypeBuilder.type('VIDEOS');
 export const VIDEOS_REMOVE = actionTypeBuilder.type('VIDEOS_REMOVE');
 export const VIDEOS_INSERT = actionTypeBuilder.type('VIDEOS_INSERT');
 export const VIDEOS_UPDATE = actionTypeBuilder.type('VIDEOS_UPDATE');
-export const VIDEOS_SINGLE_LOADED = actionTypeBuilder.type('VIDEOS_UPDATE');
+export const TEST_METHOD = actionTypeBuilder.type('TEST_METHOD');
 
 export function loadVideosFactory() {
   return (component) => {
@@ -33,15 +36,10 @@ export function loadVideosFactory() {
   };
 }
 
-export function loadVideo(id) {
-  return dispatch => {
-    dispatch({
-      type: VIDEOS_SINGLE_LOADED,
-      meteor: {
-        subscribe: () => Meteor.subscribe('videos', Meteor.userId()),
-        get: () => Videos.find(id).fetch(),
-      },
-    });
+export function loadVideo(video) {
+  return {
+    type: VIDEOS_SINGLE_LOADED,
+    data: video[0]
   }
 }
 
@@ -53,6 +51,24 @@ export function deleteVideoFactory(id) {
         remove: {
           id,
           collection: Videos,
+        },
+      },
+    });
+  };
+}
+
+export function testMethod(id) {
+  return dispatch => {
+    dispatch({
+      type: TEST_METHOD,
+      meteor: {
+        call: {
+          method: 'testMethod',
+          parameters: [id],
+          onSuccess: (data) => {
+            dispatch(loadVideo(data))
+            dispatch(push(`/library/video/awaiting/${id}`));
+          },
         },
       },
     });

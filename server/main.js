@@ -13,6 +13,13 @@ registerVideoSecurity(Videos);
 registerAuthPublications(getUserDataFactory(Meteor.users));
 registerVideosPublications(Videos);
 
+Meteor.methods({
+  testMethod: function testMethod(id) {
+    console.log(id)
+    return Videos.find({_id: id}).fetch();
+  },
+})
+
 Meteor.startup(() => {
   console.log('server lol')
 })

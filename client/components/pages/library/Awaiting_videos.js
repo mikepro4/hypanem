@@ -6,7 +6,8 @@ import { Button, Input } from "@blueprintjs/core";
 class AwaitingVideos extends Component {
 
   handleDetails(id) {
-    this.props.history.push('/library/video/awaiting/' + id)
+    this.props.testMethod(id)
+    // this.props.history.push('/library/video/awaiting/' + id)
   }
 
   handleDelete(id) {

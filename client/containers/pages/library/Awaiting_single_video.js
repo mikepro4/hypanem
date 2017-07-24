@@ -6,13 +6,14 @@ import AwaitingSingleVideo from '../../../components/pages/library/Awaiting_sing
 
 function mapStateToProps(state) {
   return {
+    videos: state.videos,
     singleVideo: state.videos.singleVideo
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    loadVideo
+    loadVideo,
   }, dispatch);
 }
 
