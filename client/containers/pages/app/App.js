@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateAppTitle } from '../../../actions/app'
+import { loadVideosFactory } from '../../../actions/videos'
 
 import App from '../../../components/pages/app/App';
 
@@ -13,7 +14,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    updateAppTitle
+    updateAppTitle,
+    loadVideos: loadVideosFactory(),
   }, dispatch);
 }
 

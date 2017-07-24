@@ -4,13 +4,8 @@ import Helmet from 'react-helmet';
 import VideoAddForm from './Video_add_form'
 
 class VideoAdd extends Component {
-
   handleFormSubmit({ url }) {
     this.props.newVideo(url, new Date())
-  }
-
-  componentDidMount() {
-    this.props.loadVideos();
   }
 
   render() {

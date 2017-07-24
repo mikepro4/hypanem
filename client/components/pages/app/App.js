@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import { Button, FocusStyleManager } from "@blueprintjs/core";
+import * as _ from 'lodash';
+import { Button, FocusStyleManager, Position, Toaster, Classes, Intent } from "@blueprintjs/core";
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 import Home from '../home/Home';
@@ -17,12 +18,30 @@ FocusStyleManager.onlyShowFocusOnTabs();
 class App extends Component {
   componentDidMount() {
     // this.props.history.push('/home')
+    this.props.loadVideos(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    //restart subscription when user changes
+    if(_.isNil(prevProps.auth.user) !== _.isNil(this.props.auth.user)) {
+        this.props.loadVideos(this);
+    }
+  }
+
+  showNotification(reason) {
+    this.refs.toaster.show({
+      message: reason,
+      intent: Intent.PRIMARY
+    });
   }
 
   render() {
     const { match, location, history, title } = this.props
     return(
         <div className="app pt-dark">
+
+          <Toaster position={Position.BOTTOM_LEFT} ref="toaster" />
+
 
           <Helmet title="Главная – Hype DNA" />
 

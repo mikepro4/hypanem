@@ -9,7 +9,7 @@ export const VIDEOS_INSERT = actionTypeBuilder.type('VIDEOS_INSERT');
 export const VIDEOS_UPDATE = actionTypeBuilder.type('VIDEOS_UPDATE');
 
 export function loadVideosFactory() {
-  return () => {
+  return (component) => {
     const finalUserId = Meteor.userId();
     return dispatch => {
       dispatch({
@@ -23,6 +23,7 @@ export function loadVideosFactory() {
             },
           }),
           get: () => Videos.findByUser(finalUserId).fetch(),
+          onChange: () => component.showNotification('videos collection loaded')
         },
       });
     };
@@ -45,7 +46,6 @@ export function deleteVideoFactory() {
   };
 }
 
-
 export function newVideoFactory(collection) {
   return (url, date) => {
     return dispatch => {
@@ -66,9 +66,8 @@ export function newVideoFactory(collection) {
   };
 }
 
-// bullshit
 export function updateVideoFactory() {
-  return (id, date) => {
+  return (url) => {
 
     return dispatch => {
       dispatch({
@@ -78,7 +77,7 @@ export function updateVideoFactory() {
             id,
             modifiers: {
               $set: {
-                date: moment(date).toDate(),
+                url: url,
               },
             },
             collection: Videos,

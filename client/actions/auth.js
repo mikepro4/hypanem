@@ -1,6 +1,7 @@
 import actionTypeBuilder from './actionTypeBuilder';
 import { push } from 'react-router-redux'
 import { Accounts } from 'meteor/accounts-base'
+import { loadVideosFactory } from './videos';
 
 export const USER_LOGGING_IN = actionTypeBuilder.type('USER_LOGGING_IN');
 export const USER_DATA = actionTypeBuilder.type('USER_DATA');
@@ -21,6 +22,7 @@ export function loadUser() {
         get: () => Meteor.user(),
       },
     });
+
   };
 }
 
@@ -31,6 +33,9 @@ export function loginWithPassword(component, {email, password}) {
         component.showError(err.reason);
         return;
       }
+
+      loadVideosFactory()
+
 
       return dispatch(push('/home'));
     });
