@@ -93,7 +93,7 @@ export function newVideo(url, date) {
   };
 }
 
-export function updateVideoFactory(url) {
+export function updateVideo(url, id) {
   return dispatch => {
     dispatch({
       type: VIDEOS_UPDATE,

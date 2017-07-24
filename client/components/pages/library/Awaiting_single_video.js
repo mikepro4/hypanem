@@ -22,6 +22,8 @@ class AwaitingSingleVideo extends Component {
   // }
 
   handleFormSubmit({url}) {
+    this.props.updateVideo(url, this.props.match.params.id)
+    this.props.history.push('/library/video/awaiting/')
   }
 
 

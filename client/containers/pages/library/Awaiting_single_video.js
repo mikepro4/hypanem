@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadVideo } from '../../../actions/videos'
+import { updateVideo } from '../../../actions/videos'
 
 import AwaitingSingleVideo from '../../../components/pages/library/Awaiting_single_video';
 
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    loadVideo,
+    updateVideo
   }, dispatch);
 }
 
