@@ -1,6 +1,9 @@
 import { push } from 'react-router-redux'
+
 import {
   VIDEOS_SINGLE_LOADED,
+  LOAD_YOUTUBE_VIDEO_DETAILS,
+  LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS
 } from './types'
 
 import actionTypeBuilder from './actionTypeBuilder';
@@ -86,10 +89,13 @@ export function newVideo(url, date) {
             url,
           },
           collection: Videos,
+          onError: (error) => console.log(error),
+          onSuccess: (error) => dispatch(push('/library/video/awaiting/'))
         },
+
       },
     });
-    dispatch(push('/library/video/awaiting/'));
+
   };
 }
 
@@ -106,6 +112,26 @@ export function updateVideo(url, id) {
             },
           },
           collection: Videos,
+        },
+      },
+    });
+  };
+}
+
+export function loadYoutubeVideoData(videoId) {
+  return dispatch => {
+    dispatch({
+      type: LOAD_YOUTUBE_VIDEO_DETAILS,
+      meteor: {
+        call: {
+          method: 'loadYoutubeDetails',
+          parameters: [videoId],
+          onSuccess: (data) => {
+            dispatch({
+              type: LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS,
+              data: data
+            });
+          },
         },
       },
     });

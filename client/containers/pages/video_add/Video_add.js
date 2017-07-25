@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { newVideo } from '../../../actions/videos'
+import { newVideo, loadYoutubeVideoData } from '../../../actions/videos'
 
 import VideoAdd from '../../../components/pages/video_add/Video_add';
 
@@ -13,7 +13,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    newVideo
+    newVideo,
+    loadYoutubeVideoData
   }, dispatch);
 }
 

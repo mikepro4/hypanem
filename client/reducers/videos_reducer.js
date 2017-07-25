@@ -3,6 +3,7 @@ import actionTypeBuilder from '../actions/actionTypeBuilder';
 import { VIDEOS, VIDEOS_REMOVE } from '../actions/videos';
 import {
   VIDEOS_SINGLE_LOADED,
+  LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS
 } from '../actions/types'
 
 export const initialState = {
@@ -22,8 +23,9 @@ export default function(state = initialState, action) {
     return assign({}, state, { items: data });
 
   case VIDEOS_SINGLE_LOADED:
-    console.log('action worked')
     return assign({}, state, { singleVideo: data });
+  case LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS:
+    return assign({}, state, { loadedVideoDetails: data });
 
   case actionTypeBuilder.changed(VIDEOS_REMOVE):
     return assign({}, state, { items: data });

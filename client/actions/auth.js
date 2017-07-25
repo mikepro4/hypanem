@@ -36,7 +36,6 @@ export function loginWithPassword(component, {email, password}) {
 
       loadVideosFactory()
 
-
       return dispatch(push('/home'));
     });
   };
