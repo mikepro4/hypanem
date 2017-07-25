@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
+import commaNumber from 'comma-number'
+import moment from 'moment';
+import 'moment/locale/ru';
 import VideoAddForm from './Video_add_form'
 import Player from '../../../containers/common/player/Player'
 
@@ -31,6 +34,9 @@ class VideoAdd extends Component {
       this.props.clearLoadedVideo()
       this.props.clearLoadedChannel()
     }
+
+    const format = commaNumber.bindWith(',', '.');
+    moment.locale('ru');
 
     return(
       <div className="page-video-add">
@@ -73,6 +79,34 @@ class VideoAdd extends Component {
                     width="680"
                     height="380"
                   />
+
+                  <div className="video-description">
+                    <h2 className="video-title">{this.props.videos.loadedVideoDetails.items[0].snippet.title}</h2>
+                    <div className="video-metadata">
+                      <ul className="video-main-details">
+                        {this.props.videos.loadedChannelDetails ? <li className="single-detail detail-channel">
+                          <div className="channel-avatar">
+                             <img src={this.props.videos.loadedChannelDetails.items[0].snippet.thumbnails.default.url}/>
+                          </div>
+                          <div className="metadata-value">{this.props.videos.loadedChannelDetails.items[0].snippet.title}</div>
+                        </li>: "" }
+
+                        <li>{format(this.props.videos.loadedVideoDetails.items[0].statistics.viewCount)} просмотров</li>
+                        <li>{moment(this.props.videos.loadedVideoDetails.items[0].snippet.publishedAt).fromNow()}</li>
+                      </ul>
+
+                      <ul className="video-stats">
+                        <li className="single-stat">
+                          <span className="pt-icon pt-icon-thumbs-up"/>
+                          {format(this.props.videos.loadedVideoDetails.items[0].statistics.likeCount)}
+                        </li>
+                        <li className="single-stat">
+                          <span className="pt-icon pt-icon-thumbs-down"/>
+                          {format(this.props.videos.loadedVideoDetails.items[0].statistics.dislikeCount)}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 <div className="loaded-video-info-area">bla</div>
               </div> : ""

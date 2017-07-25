@@ -73,6 +73,94 @@
       height: 380px;
       margin: 0 30px 0 0;
       flex-shrink: 0;
+
+      .video-container {
+        display: block;
+        width: 680px;
+        height: 380px;
+      }
+    }
+
+    .video-description {
+      margin: 35px 0 50px 0;
+
+      h2.video-title {
+        font-weight: 500;
+        font-size: 20px;
+        margin: 0 0 12px 0;
+        letter-spacing: 0.2px;
+        line-height: 22px;
+      }
+
+      .video-metadata {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+
+        ul.video-main-details {
+          li {
+            float: left;
+            display: flex;
+            font-size: 11px;
+            height: 20px;
+            align-items: center;
+            color: $gray3;
+            margin: 0 20px 0 0;
+            position: relative;
+
+            &:after {
+              content: "●";
+              font-size: 7px;
+              color: $dark-gray4;
+              position: absolute;
+              right: -12px;
+              top: 5px;
+            }
+
+            &:last-child {
+              &:after {
+                display: none;
+              }
+            }
+
+            &.detail-channel {
+              display: flex;
+              align-items: center;
+
+              .channel-avatar {
+                margin: 0 5px 0 0;
+
+                img {
+                  border-radius: 100px;
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+            }
+          }
+        }
+
+        ul.video-stats {
+
+          li.single-stat {
+            float: left;
+            display: flex;
+            font-size: 11px;
+            height: 20px;
+            align-items: center;
+            color: $gray3;
+            margin: 0 0 0 20px;
+
+            .pt-icon {
+              font-size: 16px;
+              margin: 0 5px 0 0;
+              position: relative;
+              top: -2px;
+            }
+          }
+        }
+      }
     }
 
     .loaded-video-info-area{
