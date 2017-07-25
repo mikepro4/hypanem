@@ -3,7 +3,8 @@ import { push } from 'react-router-redux'
 import {
   VIDEOS_SINGLE_LOADED,
   LOAD_YOUTUBE_VIDEO_DETAILS,
-  LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS
+  LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS,
+  CLEAR_LOADED_VIDEO
 } from './types'
 
 import actionTypeBuilder from './actionTypeBuilder';
@@ -118,6 +119,7 @@ export function updateVideo(url, id) {
   };
 }
 
+
 export function loadYoutubeVideoData(videoId) {
   return dispatch => {
     dispatch({
@@ -136,4 +138,10 @@ export function loadYoutubeVideoData(videoId) {
       },
     });
   };
+}
+
+export function clearLoadedVideo() {
+  return {
+    type: CLEAR_LOADED_VIDEO,
+  }
 }

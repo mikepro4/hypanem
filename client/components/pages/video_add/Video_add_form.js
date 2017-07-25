@@ -11,10 +11,18 @@ class VideoAddFormComponent extends React.Component {
     return (
       <form onSubmit={handleSubmit} autoComplete="off" role="presentation" className="pt-dark pt-large pt-vertical">
         <input type="password" className="fake-input"/>
-        <Field name="url"  component={ Input } label="Url" large={true} icon="link" ref="url" />
+        <Field name="url"  component={ Input } label="Url" large={true} ref="url" />
         <button action="submit" disabled={!this.props.valid} className='pt-button pt-intent-primary button_submit'>Add</button>
       </form>
     );
+  }
+}
+
+function youtube_parser(url){
+  if(url) {
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
   }
 }
 
@@ -23,6 +31,10 @@ const validate = values => {
 
   if (!values.url) {
     errors.url = 'Введи ';
+  }
+
+  if(!youtube_parser(values.url)) {
+    errors.url = 'Неправильная адрес видоса ';
   }
 
   return errors
