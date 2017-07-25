@@ -29,6 +29,11 @@ class VideoAdd extends Component {
     if(this.props.form.addvideo && this.props.form.addvideo.values) {
       renderVideoContainer = this.youtube_parser(this.props.form.addvideo.values.url)
     }
+
+    if(!this.props.form.addvideo && this.props.videos.loadedVideoDetails) {
+      this.props.clearLoadedVideo()
+    }
+
     return(
       <div>
         <Helmet title="Добавить Видео – Hype DNA" />
