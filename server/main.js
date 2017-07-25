@@ -22,10 +22,17 @@ Meteor.methods({
     console.log(id)
     return Videos.find({_id: id}).fetch();
   },
+  
   loadYoutubeDetails: function loadYoutubeDetails(id) {
     return axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${id}&key=${YOUTUBE_API_KEY}`)
       .then((data)=> {
-        console.log(data.data)
+        return(data.data)
+      })
+  },
+
+  loadChannelDetails: function loadYoutubeDetails(id) {
+    return axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${YOUTUBE_API_KEY}`)
+      .then((data)=> {
         return(data.data)
       })
   },

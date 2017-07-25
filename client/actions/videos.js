@@ -4,6 +4,9 @@ import {
   VIDEOS_SINGLE_LOADED,
   LOAD_YOUTUBE_VIDEO_DETAILS,
   LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS,
+  LOAD_CHANNEL_DETAILS,
+  LOAD_CHANNEL_DETAILS_SUCCESS,
+  CLEAR_LOADED_CHANNEL,
   CLEAR_LOADED_VIDEO
 } from './types'
 
@@ -133,6 +136,27 @@ export function loadYoutubeVideoData(videoId) {
               type: LOAD_YOUTUBE_VIDEO_DETAILS_SUCCESS,
               data: data
             });
+            dispatch(loadChannelData(data.items[0].snippet.channelId))
+          },
+        },
+      },
+    });
+  };
+}
+
+export function loadChannelData(channelId) {
+  return dispatch => {
+    dispatch({
+      type: LOAD_CHANNEL_DETAILS,
+      meteor: {
+        call: {
+          method: 'loadChannelDetails',
+          parameters: [channelId],
+          onSuccess: (data) => {
+            dispatch({
+              type: LOAD_CHANNEL_DETAILS_SUCCESS,
+              data: data
+            });
           },
         },
       },
@@ -143,5 +167,11 @@ export function loadYoutubeVideoData(videoId) {
 export function clearLoadedVideo() {
   return {
     type: CLEAR_LOADED_VIDEO,
+  }
+}
+
+export function clearLoadedChannel() {
+  return {
+    type: CLEAR_LOADED_CHANNEL,
   }
 }

@@ -11,7 +11,7 @@ class VideoAddFormComponent extends React.Component {
     return (
       <form onSubmit={handleSubmit} autoComplete="off" role="presentation" className="pt-dark pt-large pt-vertical">
         <input type="password" className="fake-input"/>
-        <Field name="url"  component={ Input } label="Url" large={true} ref="url" />
+        <Field name="url" component={ Input } label="Вставить ссылку на Youtube видео..." large={true} ref="url" />
         <button action="submit" disabled={!this.props.valid} className='pt-button pt-intent-primary button_submit'>Add</button>
       </form>
     );

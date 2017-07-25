@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {reset} from 'redux-form';
-import { newVideo, loadYoutubeVideoData, clearLoadedVideo} from '../../../actions/videos'
+import { newVideo, loadYoutubeVideoData, clearLoadedVideo, loadChannelData, clearLoadedChannel} from '../../../actions/videos'
 
 import VideoAdd from '../../../components/pages/video_add/Video_add';
 
@@ -18,7 +18,9 @@ function mapDispatchToProps(dispatch) {
     newVideo,
     loadYoutubeVideoData,
     reset,
-    clearLoadedVideo
+    clearLoadedVideo,
+    loadChannelData,
+    clearLoadedChannel
   }, dispatch);
 }
 

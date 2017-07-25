@@ -23,36 +23,61 @@ class VideoAdd extends Component {
 
   render() {
     let renderVideoContainer = false;
-    if(this.props.videos.loadedVideoDetails) {
-      console.log(this.props.videos.loadedVideoDetails.items[0].snippet)
-    }
     if(this.props.form.addvideo && this.props.form.addvideo.values) {
       renderVideoContainer = this.youtube_parser(this.props.form.addvideo.values.url)
     }
 
     if(!this.props.form.addvideo && this.props.videos.loadedVideoDetails) {
       this.props.clearLoadedVideo()
+      this.props.clearLoadedChannel()
     }
 
     return(
-      <div>
+      <div className="page-video-add">
         <Helmet title="Добавить Видео – Hype DNA" />
-          Add
-          <VideoAddForm onSubmit={this.handleFormSubmit.bind(this)} onChange={(values) => {
-            if(this.youtube_parser(values.url)){
-              this.handleFormSubmit({url: values.url })
-            } else {
-              this.props.clearLoadedVideo()
+
+          <div className="video-add-content">
+
+            <div className="video-add-form">
+
+              <h1 className="video-add-form-title">ДОБАВИТЬ ВИДЕО</h1>
+
+              <VideoAddForm onSubmit={this.handleFormSubmit.bind(this)} onChange={(values) => {
+                if(this.youtube_parser(values.url)){
+                  this.props.clearLoadedVideo()
+                  this.props.clearLoadedChannel()
+                  this.handleFormSubmit({url: values.url })
+                } else {
+                  this.props.clearLoadedVideo()
+                  this.props.clearLoadedChannel()
+                }
+              }} />
+
+              {this.props.form.addvideo && this.props.form.addvideo.values ? <div className="clear-button" onClick={() => {this.props.reset('addvideo')}}>
+                <svg width="24px" height="23px" viewBox="0 0 24 23" version="1.1">
+                    <g id="hype" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                        <g id="Artboard-3-Copy-6" transform="translate(-1228.000000, -189.000000)" fillRule="nonzero" fill="#FFFFFF">
+                            <path d="M1240,201.707107 L1250.24265,211.949754 L1250.94975,211.242647 L1240.70711,201 L1251.25013,190.456977 L1250.54302,189.74987 L1240,200.292893 L1229.45698,189.74987 L1228.74987,190.456977 L1239.29289,201 L1229.05025,211.242647 L1229.75735,211.949754 L1240,201.707107 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </svg>
+              </div> : ""}
+
+            </div>
+
+            {renderVideoContainer ? "": ""}
+
+            {this.props.videos.loadedVideoDetails ? <div className="loaded-video-container">
+                <div className="loaded-video-player-area">
+                  <Player
+                    width="680"
+                    height="380"
+                  />
+                </div>
+                <div className="loaded-video-info-area">bla</div>
+              </div> : ""
             }
-          }} />
-          <div onClick={() => {this.props.reset('addvideo')}}>reset form</div>
-          {renderVideoContainer ? "render": ""}
-
-
-          {this.props.videos.loadedVideoDetails ? <div className="">
-            <Player />
-            </div> : ""
-        }
+          </div>
 
         </div>
       );
