@@ -27,9 +27,6 @@ export const VideoSchema = new SimpleSchema({
   publishedAt: {
     type: String
   },
-  thumbnails: {
-    type: Object
-  },
   title: {
     type: String
   }

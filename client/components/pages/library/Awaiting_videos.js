@@ -15,37 +15,38 @@ class AwaitingVideos extends Component {
   }
 
   renderVideoList() {
-
     return this.props.videos.items.map((video, i) => {
-     return (
-       <li className="video-list-item" key={i}>
-          <div className="video-details">
-            <div className="video-avatar"></div>
-            <div className="video-description">{video.url}</div>
-          </div>
-          <ul className="video-actions">
-            <li className="video-single-action">
-              <Button
-                className="pt-minimal"
-                iconName="trash"
-                onClick={() => this.handleDelete(video._id)}
-              ></Button>
-            </li>
-            <li className="video-single-action">
-              <Button
-                className="pt-minimal"
-                iconName="export"
-              ></Button>
-            </li>
-            <li className="video-single-action">
-              <Button
-                iconName="arrow-right"
-                onClick={() => this.handleDetails(video._id)}
-              ></Button>
-            </li>
-          </ul>
-       </li>
-     );
+      return (
+         <li className="video-list-item" key={i}>
+            <div className="video-details">
+              <div className="video-avatar">
+                <img src={`https://i.ytimg.com/vi/${video.id}/default.jpg`}/>
+              </div>
+              <div className="video-description">{video.title}</div>
+            </div>
+            <ul className="video-actions">
+              <li className="video-single-action">
+                <Button
+                  className="pt-minimal"
+                  iconName="trash"
+                  onClick={() => this.handleDelete(video._id)}
+                ></Button>
+              </li>
+              <li className="video-single-action">
+                <Button
+                  className="pt-minimal"
+                  iconName="export"
+                ></Button>
+              </li>
+              <li className="video-single-action">
+                <Button
+                  iconName="arrow-right"
+                  onClick={() => this.handleDetails(video._id)}
+                ></Button>
+              </li>
+            </ul>
+         </li>
+       );
     });
   }
 

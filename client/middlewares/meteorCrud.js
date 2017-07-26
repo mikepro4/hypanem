@@ -16,6 +16,10 @@ export function meteorInsert(newSuccessNotification, newErrorNotification) {
         }
       }
 
+      if (onSuccess) {
+        return onSuccess(entity);
+      }
+
       store.dispatch(newSuccessNotification());
     });
   };

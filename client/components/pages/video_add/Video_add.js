@@ -28,21 +28,23 @@ class VideoAdd extends Component {
   }
 
   addVideo() {
-    console.log(this.props.videos.loadedVideoDetails)
-
     const {categoryId, channelId, channelTitle, publishedAt, thumbnails, title } = this.props.videos.loadedVideoDetails.items[0].snippet;
-
     const newVideo = {
       id: this.props.videos.loadedVideoDetails.items[0].id,
       duration: moment.duration(this.props.videos.loadedVideoDetails.items[0].contentDetails.duration).asMilliseconds(),
       categoryId: categoryId,
       channelId: channelId,
       publishedAt: publishedAt,
-      thumbnails: thumbnails,
+      thumbnails: {
+        default: {
+          url: thumbnails.default.url,
+          width: thumbnails.default.width,
+          height: thumbnails.default.height,
+        }
+      },
       title: title,
       date: new Date()
     }
-    console.log(newVideo)
 
     this.props.newVideo(newVideo);
   }
