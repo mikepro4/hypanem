@@ -104,14 +104,28 @@
           .video-details {
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             .video-avatar {
-              width: 54px;
-              background: $black;
+              width: 90px;
               height: 100%;
               margin: 0 10px 0 0;
+
+              img {
+                max-width: 100%;
+              }
             }
-            .video-description {}
+
+            .video-description {
+              border-bottom: 1px solid transparent;
+            }
+
+            &:hover {
+              .video-description {
+                border-bottom: 1px solid $white;
+              }
+            }
+
           }
 
           ul.video-actions {

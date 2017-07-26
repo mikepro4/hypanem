@@ -18,9 +18,9 @@ class AwaitingVideos extends Component {
     return this.props.videos.items.map((video, i) => {
       return (
          <li className="video-list-item" key={i}>
-            <div className="video-details">
+            <div className="video-details" onClick={() => this.handleDetails(video._id)}>
               <div className="video-avatar">
-                <img src={`https://i.ytimg.com/vi/${video.id}/default.jpg`}/>
+                <img src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}/>
               </div>
               <div className="video-description">{video.title}</div>
             </div>

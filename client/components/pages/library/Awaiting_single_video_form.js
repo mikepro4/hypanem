@@ -21,8 +21,8 @@ class AwaitingSingleVideoFormComponent extends React.Component {
 const validate = values => {
   const errors = {}
 
-  if (!values.url) {
-    errors.url = 'Введи ';
+  if (!values.id) {
+    errors.id = 'Введи ';
   }
 
   return errors

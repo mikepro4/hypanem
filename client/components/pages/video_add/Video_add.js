@@ -35,13 +35,6 @@ class VideoAdd extends Component {
       categoryId: categoryId,
       channelId: channelId,
       publishedAt: publishedAt,
-      thumbnails: {
-        default: {
-          url: thumbnails.default.url,
-          width: thumbnails.default.width,
-          height: thumbnails.default.height,
-        }
-      },
       title: title,
       date: new Date()
     }
@@ -103,6 +96,7 @@ class VideoAdd extends Component {
                   <Player
                     width="680"
                     height="380"
+                    videoId={this.props.videos.loadedVideoDetails.items[0].id}
                   />
 
                   <div className="video-description">

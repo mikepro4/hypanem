@@ -100,7 +100,7 @@ export function newVideo(newVideo) {
   };
 }
 
-export function updateVideo(url, id) {
+export function updateVideo(newVideo, id) {
   return dispatch => {
     dispatch({
       type: VIDEOS_UPDATE,
@@ -108,9 +108,7 @@ export function updateVideo(url, id) {
         update: {
           id,
           modifiers: {
-            $set: {
-              url: url,
-            },
+            $set: newVideo,
           },
           collection: Videos,
         },

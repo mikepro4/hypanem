@@ -76,7 +76,7 @@ export default class YoutubePlayer extends React.Component {
 
     let videoClasses = classnames({
       'video-container': true,
-      'video-loaded': this.props.video
+      'video-loaded': this.props.videoId
     })
 
     console.log(this.props)
@@ -84,7 +84,7 @@ export default class YoutubePlayer extends React.Component {
     return (
       <div className={videoClasses}>
        {this.props.video ? <YouTube
-          videoId={this.props.video.items[0].id}
+          videoId={this.props.videoId}
           opts={videoPlayerOptions}
           onReady={this.onReady.bind(this)}
           onPlay={this.onPlay.bind(this)}

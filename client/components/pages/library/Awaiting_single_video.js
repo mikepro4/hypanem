@@ -9,8 +9,8 @@ class AwaitingSingleVideo extends Component {
     this.props.testMethod(this.props.match.params.id)
   }
 
-  handleFormSubmit({url}) {
-    this.props.updateVideo(url, this.props.match.params.id)
+  handleFormSubmit({id}) {
+    this.props.updateVideo({}, this.props.match.params.id)
     this.props.history.push('/library/video/awaiting/')
   }
 
