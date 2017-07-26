@@ -3,10 +3,6 @@ import findByUserFactory from './videos/findByUser';
 import addUserOnInsert from './common/addUserOnInsert';
 
 export const VideoSchema = new SimpleSchema({
-  url: {
-    type: String,
-    max: 50,
-  },
   date: {
     type: Date,
   },
@@ -16,6 +12,27 @@ export const VideoSchema = new SimpleSchema({
       return addUserOnInsert(this);
     },
   },
+  id: {
+    type: String
+  },
+  duration: {
+    type: String
+  },
+  categoryId: {
+    type: String
+  },
+  channelId: {
+    type: String
+  },
+  publishedAt: {
+    type: String
+  },
+  thumbnails: {
+    type: Object
+  },
+  title: {
+    type: String
+  }
 });
 
 export const Videos = new Mongo.Collection('videos');

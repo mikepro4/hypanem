@@ -82,16 +82,15 @@ export function testMethod(id) {
   };
 }
 
-export function newVideo(url, date) {
+export function newVideo(newVideo) {
+
+  const {id, date, duration, categoryId, channelId, publishedAt, thumbnails, title} = newVideo
   return dispatch => {
     dispatch({
       type: VIDEOS_INSERT,
       meteor: {
         insert: {
-          entity: {
-            date,
-            url,
-          },
+          entity: newVideo,
           collection: Videos,
           onError: (error) => console.log(error),
           onSuccess: (error) => dispatch(push('/library/video/awaiting/'))

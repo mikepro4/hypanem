@@ -20,7 +20,7 @@ const Input = ({ input, label, icon, large, type, meta: { touched, error } }) =>
     <div className={containerClassName}>
         {icon ? <span className={`pt-icon pt-icon-${icon}`} /> : "" }
 
-        <input {...input} autoFocus className={ inputClassName } autoComplete="new-password" placeholder={label} type={type}/>
+        <input {...input} className={ inputClassName } autoComplete="new-password" placeholder={label} type={type}/>
         {touched && error ? <div className='input_error'>{touched && error && <span>{error}</span>}</div> : ""}
         { touched && !error ? <div className='input_valid'>
           <span className="pt-icon pt-icon-small-tick"/>

@@ -17,7 +17,7 @@ class AwaitingSingleVideo extends Component {
   render() {
     let myInitialValues = {
       initialValues: {
-        url: this.props.singleVideo.url
+        id: this.props.singleVideo.id
       }
     }
 

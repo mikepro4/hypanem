@@ -4,8 +4,11 @@ import Helmet from 'react-helmet';
 import commaNumber from 'comma-number'
 import moment from 'moment';
 import 'moment/locale/ru';
+import { Button, Intent } from "@blueprintjs/core";
+import { NavLink } from 'react-router-dom';
 import VideoAddForm from './Video_add_form'
 import Player from '../../../containers/common/player/Player'
+import Person from '../../../components/common/person/Person'
 
 class VideoAdd extends Component {
   handleFormSubmit({ url }) {
@@ -22,6 +25,26 @@ class VideoAdd extends Component {
       const match = url.match(regExp);
       return (match&&match[7].length==11)? match[7] : false;
     }
+  }
+
+  addVideo() {
+    console.log(this.props.videos.loadedVideoDetails)
+
+    const {categoryId, channelId, channelTitle, publishedAt, thumbnails, title } = this.props.videos.loadedVideoDetails.items[0].snippet;
+
+    const newVideo = {
+      id: this.props.videos.loadedVideoDetails.items[0].id,
+      duration: moment.duration(this.props.videos.loadedVideoDetails.items[0].contentDetails.duration).asMilliseconds(),
+      categoryId: categoryId,
+      channelId: channelId,
+      publishedAt: publishedAt,
+      thumbnails: thumbnails,
+      title: title,
+      date: new Date()
+    }
+    console.log(newVideo)
+
+    this.props.newVideo(newVideo);
   }
 
   render() {
@@ -85,10 +108,7 @@ class VideoAdd extends Component {
                     <div className="video-metadata">
                       <ul className="video-main-details">
                         {this.props.videos.loadedChannelDetails ? <li className="single-detail detail-channel">
-                          <div className="channel-avatar">
-                             <img src={this.props.videos.loadedChannelDetails.items[0].snippet.thumbnails.default.url}/>
-                          </div>
-                          <div className="metadata-value">{this.props.videos.loadedChannelDetails.items[0].snippet.title}</div>
+                          <Person person={this.props.videos.loadedChannelDetails.items[0]} />
                         </li>: "" }
 
                         <li>{format(this.props.videos.loadedVideoDetails.items[0].statistics.viewCount)} просмотров</li>
@@ -108,7 +128,32 @@ class VideoAdd extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="loaded-video-info-area">bla</div>
+
+                <div className="loaded-video-info-area">
+                  <h1 className="video-info-area-title">
+                    После того, как видео будет добавлено, ты сможешь:
+                  </h1>
+
+                  <ul className="video-info-area-list">
+                    <li>Аннотировать интересные моменты</li>
+                    <li>Выссказывать свое мнение о событиях и людях в роликах</li>
+                    <li>Отмечать упомянания людей и диссы</li>
+                    <li>Создавать мемы</li>
+                  </ul>
+
+                  <Button
+                    iconName="add"
+                    className="red-button"
+                    onClick={this.addVideo.bind(this)}
+                  >
+                    Добавить Видео
+                  </Button>
+
+                  <p>
+                    Видео будет добавлено в <NavLink to="/library/video/awaiting/">Мой Контент</NavLink>
+                  </p>
+                </div>
+
               </div> : ""
             }
           </div>

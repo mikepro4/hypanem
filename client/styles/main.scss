@@ -79,3 +79,31 @@ a:active {
   right: 0;
   bottom: 0;
 }
+
+.pt-button.red-button {
+  background: $red2 !important;
+  box-shadow: 0 8px 19px 0 rgba(16,22,26,0.54);
+  color: $white;
+  border-radius: 0;
+  padding: 10px 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "G", sans-serif;
+  font-size: 11px;
+  transition: background .15s ease-in-out;
+
+  &:hover {
+    background: $red3 !important;
+  }
+
+  &:active {
+    background: $red1  !important;
+  }
+
+  &:before {
+    position: relative;
+    top: 1px;
+    color: $white  !important;
+  }
+}

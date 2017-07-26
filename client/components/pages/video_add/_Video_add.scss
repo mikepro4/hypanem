@@ -9,7 +9,7 @@
 
   .video-add-content {
     width: 1000px;
-    margin: 50px auto;
+    margin: 40px auto;
 
     .video-add-form {
       position: relative;
@@ -73,6 +73,8 @@
       height: 380px;
       margin: 0 30px 0 0;
       flex-shrink: 0;
+      background: $black;
+      box-shadow: 0 10px 50px 0 rgba(16,22,26,0.54);
 
       .video-container {
         display: block;
@@ -87,7 +89,7 @@
       h2.video-title {
         font-weight: 500;
         font-size: 20px;
-        margin: 0 0 12px 0;
+        margin: 0 0 10px 0;
         letter-spacing: 0.2px;
         line-height: 22px;
       }
@@ -125,10 +127,26 @@
             }
 
             &.detail-channel {
-              display: flex;
-              align-items: center;
+
+              .channel-avatar-container {
+                display: flex;
+                align-items: center;
+                height: 20px;
+
+                .person-name {
+                  color: $white;
+                  border-bottom: 1px solid transparent;
+                }
+
+                &:hover {
+                  .person-name {
+                    border-bottom: 1px solid $white;
+                  }
+                }
+              }
 
               .channel-avatar {
+                display: block;
                 margin: 0 5px 0 0;
 
                 img {
@@ -165,6 +183,49 @@
 
     .loaded-video-info-area{
       flex-grow: 1;
+
+      h1.video-info-area-title {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 300;
+        margin: 0 0 20px 0;
+      }
+
+      p {
+        font-size: 12px;
+        margin: 20px 0 0 0;
+        color: $gray3;
+        font-weight: 300;
+
+        a {
+          color: $white;
+
+          &:hover {
+            border-bottom: 1px solid $white;
+          }
+        }
+      }
+
+      ul.video-info-area-list {
+        color: $gray3;
+        font-size: 12px;
+        margin: 0 0 20px 0;
+
+        li {
+          margin: 0 0 10px 20px;
+          display: block;
+          font-weight: 300;
+          position: relative;
+
+          &:before {
+            content: "—";
+            position: absolute;
+            left: -20px;
+            top: 0;
+            opacity: .3;
+          }
+        }
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ class AwaitingSingleVideoFormComponent extends React.Component {
     return (
       <form onSubmit={handleSubmit} autoComplete="off" role="presentation" className="pt-dark pt-large pt-vertical">
         <input type="password" className="fake-input"/>
-        <Field name="url"  component={ Input } label="Url" large={true} icon="link" ref="url" />
+        <Field name="id" component={ Input } label="Id" large={true} ref="id" />
         <button action="submit" disabled={!this.props.valid} className='pt-button pt-intent-primary button_submit'>Обновить</button>
       </form>
     );
