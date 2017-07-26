@@ -36,7 +36,7 @@ export function loadVideosFactory() {
             },
           }),
           get: () => Videos.findByUser(finalUserId).fetch(),
-          onChange: () => component.showNotification('videos collection loaded')
+          onChange: () => component.showNotification('videos collection changed')
         },
       });
     };
