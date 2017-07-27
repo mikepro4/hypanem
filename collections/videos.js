@@ -24,6 +24,9 @@ export const VideoSchema = new SimpleSchema({
   channelId: {
     type: String
   },
+  channelTitle: {
+    type: String
+  },
   publishedAt: {
     type: String
   },

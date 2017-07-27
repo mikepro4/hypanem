@@ -2,11 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
 import { Button, Input } from "@blueprintjs/core";
+import { NavLink } from 'react-router-dom';
 
 class AwaitingVideos extends Component {
 
   handleDetails(id) {
-    this.props.testMethod(id)
+    this.props.loadSingleVideo(id)
     // this.props.history.push('/library/video/awaiting/' + id)
   }
 
@@ -18,11 +19,16 @@ class AwaitingVideos extends Component {
     return this.props.videos.items.map((video, i) => {
       return (
          <li className="video-list-item" key={i}>
-            <div className="video-details" onClick={() => this.handleDetails(video._id)}>
+            <div className="video-details">
               <div className="video-avatar">
                 <img src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}/>
               </div>
-              <div className="video-description">{video.title}</div>
+              <div className="video-description">
+                <div className="video-title"  onClick={() => this.handleDetails(video._id)}>{video.title}</div>
+                <NavLink to={"/person/" + video.channelId} className="channel-title">
+                  {video.channelTitle}
+                </NavLink>
+              </div>
             </div>
             <ul className="video-actions">
               <li className="video-single-action">

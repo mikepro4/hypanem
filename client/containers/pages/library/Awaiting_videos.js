@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteVideoFactory, testMethod } from '../../../actions/videos'
+import { deleteVideoFactory, loadSingleVideo } from '../../../actions/videos'
 
 import AwaitingVideos from '../../../components/pages/library/Awaiting_videos';
 
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     deleteVideoFactory,
-    testMethod
+    loadSingleVideo
   }, dispatch);
 }
 

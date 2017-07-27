@@ -13,6 +13,7 @@ import SignOut from '../../../containers/pages/auth/signout/Sign_out';
 
 import VideoAdd from '../../../containers/pages/video_add/Video_add';
 import Library from '../../../containers/pages/library/Library';
+import SingleVideo from '../../../containers/pages/single_video/Single_video';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -57,6 +58,7 @@ class App extends Component {
               <Route path="/auth/signout" component={SignOut} />
               <Route path="/add" component={VideoAdd} />
               <Route path="/library" component={Library} />
+              <Route path="/video/:id" exact component={SingleVideo} />
             </Switch>
           </div>
 

@@ -1,0 +1,19 @@
+.page-single-video {
+  display: flex;
+
+  .single-video-main {
+    flex-grow: 1;
+    overflow-y: auto;
+
+    .single-video-container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+  }
+
+  .single-video-sidebar {
+    flex-shrink: 0;
+    width: 400px;
+    border-left: 1px solid $dark-gray2;
+  }
+}

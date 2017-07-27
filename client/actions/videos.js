@@ -19,7 +19,7 @@ export const VIDEOS = actionTypeBuilder.type('VIDEOS');
 export const VIDEOS_REMOVE = actionTypeBuilder.type('VIDEOS_REMOVE');
 export const VIDEOS_INSERT = actionTypeBuilder.type('VIDEOS_INSERT');
 export const VIDEOS_UPDATE = actionTypeBuilder.type('VIDEOS_UPDATE');
-export const TEST_METHOD = actionTypeBuilder.type('TEST_METHOD');
+export const LOAD_SINGLE_VIDEO = actionTypeBuilder.type('LOAD_SINGLE_VIDEO');
 
 export function loadVideosFactory() {
   return (component) => {
@@ -64,17 +64,20 @@ export function deleteVideoFactory(id) {
   };
 }
 
-export function testMethod(id) {
+export function loadSingleVideo(id) {
   return dispatch => {
+    dispatch(clearLoadedVideo())
+    dispatch(clearLoadedChannel())
     dispatch({
-      type: TEST_METHOD,
+      type: LOAD_SINGLE_VIDEO,
       meteor: {
         call: {
-          method: 'testMethod',
+          method: 'loadSingleVideo',
           parameters: [id],
           onSuccess: (data) => {
             dispatch(loadVideo(data))
-            dispatch(push(`/library/video/awaiting/${id}`));
+            dispatch(push(`/video/${id}`));
+            dispatch(loadChannelData(data[0].channelId))
           },
         },
       },

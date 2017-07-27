@@ -104,7 +104,6 @@
           .video-details {
             display: flex;
             align-items: center;
-            cursor: pointer;
 
             .video-avatar {
               width: 90px;
@@ -117,15 +116,30 @@
             }
 
             .video-description {
-              border-bottom: 1px solid transparent;
-            }
+              .video-title {
+                border-bottom: 1px solid transparent;
+                cursor: pointer;
+                transition: all .15s;
 
-            &:hover {
-              .video-description {
-                border-bottom: 1px solid $white;
+                &:hover {
+                  border-bottom: 1px solid $white;
+                }
+              }
+              .channel-title {
+                display: inline-block;
+                margin: 5px 0 0 0;
+                font-size: 11px;
+                color: $gray3;
+                font-weight: 300;
+                border-bottom: 1px solid transparent;
+                transition: all .15s;
+
+                &:hover {
+                  color: $white;
+                  border-bottom: 1px solid $white;
+                }
               }
             }
-
           }
 
           ul.video-actions {

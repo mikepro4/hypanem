@@ -36,7 +36,8 @@ class VideoAdd extends Component {
       channelId: channelId,
       publishedAt: publishedAt,
       title: title,
-      date: new Date()
+      date: new Date(),
+      channelTitle: channelTitle
     }
 
     this.props.newVideo(newVideo);

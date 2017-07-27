@@ -83,7 +83,7 @@ export default class YoutubePlayer extends React.Component {
 
     return (
       <div className={videoClasses}>
-       {this.props.video ? <YouTube
+       <YouTube
           videoId={this.props.videoId}
           opts={videoPlayerOptions}
           onReady={this.onReady.bind(this)}
@@ -91,7 +91,7 @@ export default class YoutubePlayer extends React.Component {
           onStop={this.onStop.bind(this)}
           onPause={this.onPause.bind(this)}
           onStateChange={this.onStateChange.bind(this)}
-        /> :"" }
+        />
       </div>
     )
   }

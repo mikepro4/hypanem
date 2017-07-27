@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateVideo, loadSingleVideo } from '../../../actions/videos'
+import {reset} from 'redux-form';
 
-import AwaitingSingleVideo from '../../../components/pages/library/Awaiting_single_video';
+import SingleVideo from '../../../components/pages/single_video/Single_video';
+import { loadSingleVideo } from '../../../actions/videos'
 
 function mapStateToProps(state) {
   return {
@@ -13,9 +14,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    updateVideo,
     loadSingleVideo
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AwaitingSingleVideo);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleVideo);

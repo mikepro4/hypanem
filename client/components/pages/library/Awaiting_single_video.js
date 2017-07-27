@@ -6,7 +6,7 @@ import AwaitingSingleVideoFormComponent from './Awaiting_single_video_form';
 
 class AwaitingSingleVideo extends Component {
   componentDidMount() {
-    this.props.testMethod(this.props.match.params.id)
+    this.props.loadSingleVideo(this.props.match.params.id)
   }
 
   handleFormSubmit({id}) {
