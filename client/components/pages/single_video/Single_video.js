@@ -3,6 +3,7 @@ import { Button, Input } from "@blueprintjs/core";
 import moment from 'moment';
 import { browserHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import * as _ from 'lodash'
 import Person from '../../../components/common/person/Person';
 import Player from '../../../containers/common/player/Player';
 
@@ -13,6 +14,9 @@ export default class SingleVideo extends React.Component {
     }
   }
   render() {
+    if(_.isEmpty(this.props.singleVideo)) {
+      return <div></div>
+    }
     const { title, publishedAt, id } = this.props.singleVideo
     console.log(id)
     return (

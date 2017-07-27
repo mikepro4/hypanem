@@ -75,6 +75,7 @@ export function loadSingleVideo(id) {
           method: 'loadSingleVideo',
           parameters: [id],
           onSuccess: (data) => {
+            console.log(data)
             dispatch(loadVideo(data))
             dispatch(push(`/video/${id}`));
             dispatch(loadChannelData(data[0].channelId))
@@ -94,8 +95,8 @@ export function newVideo(newVideo) {
           entity: newVideo,
           collection: Videos,
           onError: (error) => console.log(error),
-          onSuccess: () =>  {
-            dispatch(push('/library/video/awaiting/'))
+          onSuccess: (data) =>  {
+            dispatch(push(`/video/${data._id}`))
           },
         },
       },

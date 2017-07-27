@@ -8,6 +8,73 @@
     .single-video-container {
       max-width: 920px;
       margin: 0 auto;
+
+      ul.video-main-details {
+        li {
+          float: left;
+          display: flex;
+          font-size: 11px;
+          height: 20px;
+          align-items: center;
+          color: $gray3;
+          margin: 0 20px 0 0;
+          position: relative;
+
+          &:after {
+            content: "●";
+            font-size: 7px;
+            color: $dark-gray4;
+            position: absolute;
+            right: -12px;
+            top: 5px;
+          }
+
+          &:last-child {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+
+      .channel-avatar-container {
+        display: flex;
+        align-items: center;
+        height: 20px;
+
+        .person-name {
+          color: $white;
+          border-bottom: 1px solid transparent;
+        }
+
+        &:hover {
+          .person-name {
+            border-bottom: 1px solid $white;
+          }
+        }
+      }
+
+      .channel-avatar {
+        display: block;
+        margin: 0 5px 0 0;
+
+        img {
+          border-radius: 100px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .single-video-player {
+        background: $black;
+        height: 510px;
+      }
     }
   }
 
