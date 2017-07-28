@@ -15,12 +15,26 @@ export default class YoutubePlayer extends React.Component {
   }
 
   onReady(event) {
+    this.setState({
+      player: event.target
+    });
   }
 
   onStateChange(event) {
+    clearInterval(this.state.timeInterval);
   }
 
   componentDidUpdate(event) {
+    switch(this.props.player.status) {
+      case 'play':
+        return this.playVideo()
+      case 'pause':
+        return this.pauseVideo()
+      case 'stop':
+        return this.stopVideo()
+      case 'seek':
+        return this.seekVideo()
+    }
   }
 
   playPauseSwitch() {
@@ -42,25 +56,42 @@ export default class YoutubePlayer extends React.Component {
   }
 
   onPlay(event) {
+    console.log('onPlay')
+    this.setState({ 'timeInterval': null })
+    this.props.updatePlayerStatus('playing')
+    this.startTimeInterval()
   }
 
   onPause(event) {
+    console.log('onPause')
+    clearInterval(this.state.timeInterval);
+    this.props.updatePlayerStatus('paused')
   }
 
   startTimeInterval() {
+    const timeInterval = setInterval(() => {
+      this.props.updateTime(this.state.player.getCurrentTime())
+    }, 100)
+
+    this.setState({timeInterval})
   }
 
   componentWillMount() {
+    clearInterval(this.state.timeInterval);
   }
 
   componentWillUnmount(){
+    clearInterval(this.state.timeInterval);
+    this.props.updatePlayerStatus('cleared');
   }
 
   clearTime() {
+    this.props.dispatch(0)
   }
 
 
   onStop() {
+    this.props.dispatch(0)
   }
 
   render() {
@@ -76,7 +107,7 @@ export default class YoutubePlayer extends React.Component {
 
     let videoClasses = classnames({
       'video-container': true,
-      'video-loaded': this.props.videoId
+      'video-loaded': this.props.player.playingVideoId
     })
 
     console.log(this.props)
@@ -84,7 +115,7 @@ export default class YoutubePlayer extends React.Component {
     return (
       <div className={videoClasses}>
        <YouTube
-          videoId={this.props.videoId}
+          videoId={this.props.player.playingVideoId}
           opts={videoPlayerOptions}
           onReady={this.onReady.bind(this)}
           onPlay={this.onPlay.bind(this)}

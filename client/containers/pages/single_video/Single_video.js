@@ -4,6 +4,7 @@ import {reset} from 'redux-form';
 
 import SingleVideo from '../../../components/pages/single_video/Single_video';
 import { loadSingleVideo } from '../../../actions/videos'
+import { updatePlayerVideo } from '../../../actions/player'
 
 function mapStateToProps(state) {
   return {
@@ -14,7 +15,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    loadSingleVideo
+    loadSingleVideo,
+    updatePlayerVideo
   }, dispatch);
 }
 

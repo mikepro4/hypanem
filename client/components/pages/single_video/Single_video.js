@@ -17,6 +17,8 @@ export default class SingleVideo extends React.Component {
     if(_.isEmpty(this.props.singleVideo)) {
       return <div></div>
     }
+    this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+
     const { title, publishedAt, id, date } = this.props.singleVideo
     console.log(id)
     return (
@@ -63,7 +65,6 @@ export default class SingleVideo extends React.Component {
               <Player
                 width="100%"
                 height="518"
-                videoId={id}
               />
               <div className="video-player-timeline"> </div>
             </div>

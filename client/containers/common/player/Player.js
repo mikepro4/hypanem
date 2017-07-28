@@ -2,20 +2,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {reset} from 'redux-form';
 import { newVideo, loadYoutubeVideoData } from '../../../actions/videos'
+import { updatePlayerStatus, updateTime } from '../../../actions/player'
 
 import Player from '../../../components/common/player/Player';
 
 function mapStateToProps(state) {
   return {
-    video: state.videos.loadedVideoDetails,
+    player: state.player
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    newVideo,
-    loadYoutubeVideoData,
-    reset
+    updatePlayerStatus,
+    updateTime
   }, dispatch);
 }
 

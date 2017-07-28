@@ -31,7 +31,7 @@ class VideoAdd extends Component {
     const {categoryId, channelId, channelTitle, publishedAt, thumbnails, title } = this.props.videos.loadedVideoDetails.items[0].snippet;
     const newVideo = {
       id: this.props.videos.loadedVideoDetails.items[0].id,
-      duration: moment.duration(this.props.videos.loadedVideoDetails.items[0].contentDetails.duration).asMilliseconds(),
+      duration: moment.duration(this.props.videos.loadedVideoDetails.items[0].contentDetails.duration).asSeconds(),
       categoryId: categoryId,
       channelId: channelId,
       publishedAt: publishedAt,
@@ -55,6 +55,9 @@ class VideoAdd extends Component {
 
     const format = commaNumber.bindWith(',', '.');
     moment.locale('ru');
+    if(this.props.videos.loadedVideoDetails) {
+      this.props.updatePlayerVideo(this.props.singleVideo.id, moment.duration(this.props.singleVideo.contentDetails.duration).asSeconds())
+    }
 
     return(
       <div className="page-video-add">

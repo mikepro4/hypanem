@@ -5,6 +5,7 @@ import appReducer from './app_reducer'
 import authReducer from './auth_reducer'
 import videosReducer from './videos_reducer'
 import notification from './notifications';
+import player from './player';
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   routing: routing,
   form: formReducer,
   videos: videosReducer,
+  player: player,
   notification
 });
 
