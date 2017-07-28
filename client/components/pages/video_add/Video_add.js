@@ -9,13 +9,15 @@ import { NavLink } from 'react-router-dom';
 import VideoAddForm from './Video_add_form'
 import Player from '../../../containers/common/player/Player'
 import Person from '../../../components/common/person/Person'
+import _ from 'lodash';
 
 class VideoAdd extends Component {
   handleFormSubmit({ url }) {
-    // this.props.newVideo(url, new Date())
     console.log(this.youtube_parser(url))
     if(this.youtube_parser(url)){
-      this.props.loadYoutubeVideoData(this.youtube_parser(url))
+      this.props.loadYoutubeVideoData(this.youtube_parser(url), () => {
+        this.props.updatePlayerVideo(this.props.singleVideo.id, moment.duration(this.props.singleVideo.contentDetails.duration).asSeconds())
+      })
     }
   }
 
@@ -55,9 +57,6 @@ class VideoAdd extends Component {
 
     const format = commaNumber.bindWith(',', '.');
     moment.locale('ru');
-    if(this.props.singleVideo) {
-      this.props.updatePlayerVideo(this.props.singleVideo.id, moment.duration(this.props.singleVideo.contentDetails.duration).asSeconds())
-    }
 
     return(
       <div className="page-video-add">

@@ -122,7 +122,7 @@ export function updateVideo(newVideo, id) {
 }
 
 
-export function loadYoutubeVideoData(videoId) {
+export function loadYoutubeVideoData(videoId, successCallBack) {
   return dispatch => {
     dispatch({
       type: LOAD_YOUTUBE_VIDEO_DETAILS,
@@ -136,6 +136,9 @@ export function loadYoutubeVideoData(videoId) {
               data: data
             });
             dispatch(loadChannelData(data.items[0].snippet.channelId))
+            if(successCallBack) {
+              return(successCallBack())
+            }
           },
         },
       },
