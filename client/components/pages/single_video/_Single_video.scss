@@ -10,15 +10,20 @@
       margin: 0 auto;
 
       ul.video-main-details {
+        margin: 10px 0 0 0;
+        min-height: 20px;
+
         li {
           float: left;
           display: flex;
-          font-size: 11px;
+          font-size: 10px;
           height: 20px;
           align-items: center;
           color: $gray3;
           margin: 0 20px 0 0;
           position: relative;
+          font-weight: 300;
+          letter-spacing: 0.4px;
 
           &:after {
             content: "●";
@@ -34,9 +39,12 @@
               display: none;
             }
           }
+
+          &.time-detail {
+            color: $gray1;
+          }
         }
       }
-
 
       .channel-avatar-container {
         display: flex;
@@ -57,7 +65,9 @@
 
       .channel-avatar {
         display: block;
-        margin: 0 5px 0 0;
+        margin: 5px 5px 0 0;
+        position: relative;
+        top: -2px;
 
         img {
           border-radius: 100px;
@@ -66,10 +76,61 @@
         }
       }
 
-      .header-content {
-        display: flex;
-        justify-content: space-between;
+      .single-video-header {
+        margin: 20px 0 30px;
+
+        .back-button {
+          color: $gray2;
+          transition: all .15s;
+          background: none;
+          padding-left: 0;
+          padding-right: 0;
+          font-weight: 300;
+          font-size: 12px;
+          font-family: "G", sans-serif;
+          letter-spacing: 0.3px;
+          display: none;
+
+          &:before {
+            color: $gray2;
+            transition: all .15s;
+          }
+
+          &:hover {
+            color: $white;
+
+            &:before {
+              color: $white;
+            }
+          }
+        }
+
+        .header-content {
+          display: flex;
+          justify-content: space-between;
+          min-height: 72px;
+          align-items: center;
+
+          .header-description {
+            .video-title {
+              font-size: 20px;
+              margin: 18px 0 3px 0;
+              line-height: 22px;
+              font-weight: 400;
+              letter-spacing: 0.15px;
+            }
+          }
+
+          .pt-button {
+            height: 60px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin: 10px 0 0 40px;
+          }
+        }
       }
+
+
 
       .single-video-player {
         background: $black;

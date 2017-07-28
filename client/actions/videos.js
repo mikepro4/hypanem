@@ -96,7 +96,7 @@ export function newVideo(newVideo) {
           collection: Videos,
           onError: (error) => console.log(error),
           onSuccess: (data) =>  {
-            dispatch(push(`/video/${data._id}`))
+            dispatch(push("library/video/awaiting"))
           },
         },
       },

@@ -139,7 +139,7 @@ class VideoAdd extends Component {
 
                   <Button
                     iconName="add"
-                    className="red-button"
+                    className="green-button"
                     onClick={this.addVideo.bind(this)}
                   >
                     Добавить Видео

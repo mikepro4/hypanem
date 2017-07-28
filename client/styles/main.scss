@@ -108,3 +108,31 @@ a:active {
     color: $white  !important;
   }
 }
+
+.pt-button.green-button {
+  background: $green4 !important;
+  color: $white;
+  border-radius: 0;
+  padding: 10px 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "G", sans-serif;
+  font-size: 11px;
+  transition: background .15s ease-in-out;
+  box-shadow: 0 2px 34px 0 rgba(21,179,113,0.25) !important;
+
+  &:hover {
+    background: $green3 !important;
+  }
+
+  &:active {
+    background: $green5  !important;
+  }
+
+  &:before {
+    position: relative;
+    top: 1px;
+    color: $white  !important;
+  }
+}

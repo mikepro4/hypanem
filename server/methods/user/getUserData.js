@@ -7,6 +7,7 @@ export default function(userCollection) {
         coachId: 1,
         profile: 1,
         registered_emails: 1,
+        status: 1
       },
     });
   };

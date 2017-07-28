@@ -17,7 +17,7 @@ export default class SingleVideo extends React.Component {
     if(_.isEmpty(this.props.singleVideo)) {
       return <div></div>
     }
-    const { title, publishedAt, id } = this.props.singleVideo
+    const { title, publishedAt, id, date } = this.props.singleVideo
     console.log(id)
     return (
       <div className="page-container page-single-video">
@@ -28,7 +28,9 @@ export default class SingleVideo extends React.Component {
               <Button
                 iconName="arrow-left"
                 className="back-button pt-minimal"
-                onClick={() => { this.props.history.go(-1)}}
+                onClick={() => {
+                    this.props.history.goBack()
+                }}
               >
                 Назад
               </Button>
@@ -41,12 +43,16 @@ export default class SingleVideo extends React.Component {
                       {this.props.videos.loadedChannelDetails ? <li className="single-detail detail-channel">
                         <Person person={this.props.videos.loadedChannelDetails.items[0]} />
                       </li>: "" }
+
+                      {this.props.videos.loadedChannelDetails ? <li className="single-detail time-detail">
+                        Добавлено {moment(date).fromNow()}
+                      </li> : "" }
                     </ul>
                   </div>
                 </div>
                 <Button
-                  iconName="arrow-left"
-                  className="button-red"
+                  iconName="cloud-upload"
+                  className="green-button"
                 >
                   Опубликовать Видео
                 </Button>
