@@ -44,15 +44,42 @@ export default class YoutubePlayer extends React.Component {
   }
 
   playVideo() {
+    console.log('play video')
+    clearInterval(this.state.timeInterval);
+    // this.clearTime()
+    this.props.updatePlayerStatus('waiting')
+
+    // fake delay needed for the video switch
+    setTimeout(() => {
+      this.state.player.playVideo()
+      this.props.updatePlayerStatus('playing')
+    }, 1);
   }
 
   pauseVideo() {
+    console.log('pause video')
+    this.state.player.pauseVideo();
   }
 
   stopVideo() {
+    this.clearTime()
+    console.log('stop video')
+    this.state.player.stopVideo();
+    this.props.updatePlayerStatus('stopped')
   }
 
   seekVideo() {
+    console.log('seek to')
+    if(this.state.player) {
+      clearInterval(this.state.timeInterval);
+      const seekToSeconds = this.props.player.seekToTime
+      this.playVideo()
+
+      // fake delay needed for the video switch/seek
+      setTimeout(() => {
+        this.state.player.seekTo(seekToSeconds)
+      }, 2);
+    }
   }
 
   onPlay(event) {
@@ -86,12 +113,11 @@ export default class YoutubePlayer extends React.Component {
   }
 
   clearTime() {
-    this.props.dispatch(0)
+    this.props.updateTime(0)
   }
 
-
   onStop() {
-    this.props.dispatch(0)
+    this.props.updateTime(0)
   }
 
   render() {

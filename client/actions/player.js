@@ -3,7 +3,8 @@ import {
   UPDATE_STATUS,
   UPDATE_TIME,
   UPDATE_PLAYER_VIDEO_ID,
-  RESET_VIDEO
+  RESET_VIDEO,
+  SEEK_TO_TIME
 } from './types';
 
 export function updatePlayerStatus(status) {
@@ -31,5 +32,12 @@ export function updatePlayerVideo(playingVideoId, duration) {
 export function resetVideo() {
   return {
     type: RESET_VIDEO
+  };
+}
+
+export function seekToTime(seconds) {
+  return {
+    type: SEEK_TO_TIME,
+    seconds
   };
 }

@@ -76,6 +76,10 @@ export default class SingleVideo extends React.Component {
                 height="518"
               />
               <div className="video-player-timeline"> </div>
+              <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
+              <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
+              <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
+              <div onClick={() => this.props.seekToTime(30)}>Seek to 30</div>
             </div>
 
           </div>
