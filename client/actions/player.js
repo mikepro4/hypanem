@@ -2,7 +2,8 @@
 import {
   UPDATE_STATUS,
   UPDATE_TIME,
-  UPDATE_PLAYER_VIDEO_ID
+  UPDATE_PLAYER_VIDEO_ID,
+  RESET_VIDEO
 } from './types';
 
 export function updatePlayerStatus(status) {
@@ -24,5 +25,11 @@ export function updatePlayerVideo(playingVideoId, duration) {
     type: UPDATE_PLAYER_VIDEO_ID,
     playingVideoId: playingVideoId,
     duration
+  };
+}
+
+export function resetVideo() {
+  return {
+    type: RESET_VIDEO
   };
 }

@@ -55,7 +55,7 @@ class VideoAdd extends Component {
 
     const format = commaNumber.bindWith(',', '.');
     moment.locale('ru');
-    if(this.props.videos.loadedVideoDetails) {
+    if(this.props.singleVideo) {
       this.props.updatePlayerVideo(this.props.singleVideo.id, moment.duration(this.props.singleVideo.contentDetails.duration).asSeconds())
     }
 

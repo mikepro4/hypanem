@@ -8,6 +8,7 @@ class AwaitingVideos extends Component {
 
   handleDetails(id) {
     this.props.loadSingleVideo(id)
+    this.props.resetVideo()
     // this.props.history.push('/library/video/awaiting/' + id)
   }
 

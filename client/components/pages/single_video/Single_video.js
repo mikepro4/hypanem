@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input } from "@blueprintjs/core";
+import { Button, Input, Spinner } from "@blueprintjs/core";
 import moment from 'moment';
 import { browserHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -11,13 +11,22 @@ export default class SingleVideo extends React.Component {
   componentDidMount() {
     if(_.isEmpty(this.props.singleVideo)) {
       this.props.loadSingleVideo(this.props.match.params.id);
+      this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
     }
   }
+
+  componentWillUpdate() {
+    this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+  }
+
+  componentWillUnmount() {
+    this.props.resetVideo()
+  }
+
   render() {
     if(_.isEmpty(this.props.singleVideo)) {
       return <div></div>
     }
-    this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
 
     const { title, publishedAt, id, date } = this.props.singleVideo
     console.log(id)

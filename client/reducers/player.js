@@ -2,7 +2,8 @@ import { assign } from 'lodash';
 import {
   UPDATE_STATUS,
   UPDATE_TIME,
-  UPDATE_PLAYER_VIDEO_ID
+  UPDATE_PLAYER_VIDEO_ID,
+  RESET_VIDEO
 } from '../actions/types'
 
 const initialPlayerState = {
@@ -30,6 +31,9 @@ export default (state = initialPlayerState, action) => {
         return  assign({}, state, {
           status: action.status
         })
+
+      case RESET_VIDEO:
+        return initialPlayerState
     default:
       return state
   }
