@@ -40,11 +40,11 @@ export default store => next => action => {
   const { subscribe, get, onChange } = action.meteor;
 
   // If we already have an handle for this action
-  if (handles[action.type]) {
-    const subscriptionId = handles[action.type].subscriptionId;
-    computations[subscriptionId].stop();
-    handles[action.type].stop();
-  }
+  // if (handles[action.type]) {
+  //   const subscriptionId = handles[action.type].subscriptionId;
+  //   computations[subscriptionId].stop();
+  //   handles[action.type].stop();
+  // }
 
   const handle = subscribe();
   const subscriptionId = handle.subscriptionId;
