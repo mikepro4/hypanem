@@ -21,16 +21,19 @@ export const ChannelSchema = new SimpleSchema({
     type: String
   },
   description: {
-    type: String
+    type: String,
+    type: "optional"
   },
   customUrl: {
-    type: String
+    type: String,
+    type: "optional"
   },
   publishedAt: {
     type: String
   },
   thumbnails: {
-    type: ThumbnailsSchema
+    type: ThumbnailsSchema,
+    type: "optional"
   },
   addedAt: {
     type: Date
