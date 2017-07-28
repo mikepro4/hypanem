@@ -9,7 +9,7 @@ import { updatePlayerVideo, updatePlayerStatus, resetVideo, seekToTime } from '.
 function mapStateToProps(state) {
   return {
     videos: state.videos,
-    singleVideo: state.videos.singleVideo
+    singleVideo: state.videos.singleVideo,
   };
 }
 

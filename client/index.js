@@ -21,12 +21,12 @@ import { newSuccessNotification, newErrorNotification } from './actions/notifica
 
 import { loadUser } from './actions/auth';
 
-const logger = createLogger();
+// const logger = createLogger();
 const history = createBrowserHistory();
 const middleware = routerMiddleware(history);
 
 const enhancers = [
-  composeWithDevTools(applyMiddleware(middleware, ReduxThunk, logger,
+  composeWithDevTools(applyMiddleware(middleware, ReduxThunk,
     meteorSubscription,
     meteorDatasource,
     meteorMethod(newSuccessNotification, newErrorNotification),

@@ -75,7 +75,8 @@ export default class SingleVideo extends React.Component {
                 width="100%"
                 height="518"
               />
-              <div className="video-player-timeline"> </div>
+              <div className="video-player-timeline">
+              </div>
               <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
               <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
               <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
