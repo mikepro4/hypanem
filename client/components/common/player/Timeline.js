@@ -87,8 +87,11 @@ export default class Timeline extends React.Component {
     if(this.refs.timeline) {
       const containerWIdth = this.refs.timeline.getBoundingClientRect().width
       // console.log(containerWIdth)
-      const timesAmount = Math.floor(containerWIdth/35/2)
-      const timeInterval = Math.floor(this.props.player.duration / timesAmount)
+      const timesAmount = (containerWIdth/35/2)
+      const timeInterval = Number(this.props.player.duration / timesAmount).toFixed(0)
+
+      console.log(timeInterval)
+
 
       const secondsArray = Array.apply(null, {length: this.props.player.duration}).map(Number.call, Number)
 
