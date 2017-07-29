@@ -136,8 +136,6 @@ export default class YoutubePlayer extends React.Component {
       'video-loaded': this.props.player.playingVideoId
     })
 
-    console.log(this.props)
-
     return (
       <div className={videoClasses}>
        <YouTube

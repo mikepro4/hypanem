@@ -6,17 +6,24 @@ import { createBrowserHistory } from 'history'
 import * as _ from 'lodash'
 import Person from '../../../components/common/person/Person';
 import Player from '../../../containers/common/player/Player';
+import Timeline from '../../../containers/common/player/Timeline';
 
 export default class SingleVideo extends React.Component {
   componentDidMount() {
     if(_.isEmpty(this.props.singleVideo)) {
-      this.props.loadSingleVideo(this.props.match.params.id);
+
       this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+
+      this.props.loadSingleVideo(this.props.match.params.id, () => {
+        this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+      });
     }
   }
 
-  componentWillUpdate() {
-    this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+  componentDidUpdate(newState) {
+    if(this.props.singleVideo.id != this.props.player.playingVideoId) {
+      this.props.updatePlayerVideo(this.props.singleVideo.id, this.props.singleVideo.duration)
+    }
   }
 
   componentWillUnmount() {
@@ -29,7 +36,6 @@ export default class SingleVideo extends React.Component {
     }
 
     const { title, publishedAt, id, date } = this.props.singleVideo
-    console.log(id)
     return (
       <div className="page-container page-single-video">
         <div className="single-video-main">
@@ -75,12 +81,32 @@ export default class SingleVideo extends React.Component {
                 width="100%"
                 height="518"
               />
+
               <div className="video-player-timeline">
+
+                <div className="player-time-controls">
+                  <div className="player-controls-container">
+                    <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
+                    <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
+                    <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
+                  </div>
+
+                  <div className="player-time-container">
+
+                  {this.props.player ? <div>{this.props.player.currentTime} / {this.props.player.duration}</div> : ""}
+
+                  </div>
+                </div>
+
+                <div className="player-timeline">
+                  <Timeline {...this.props} />
+                </div>
+
               </div>
-              <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
+              {/* <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
               <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
               <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
-              <div onClick={() => this.props.seekToTime(30)}>Seek to 30</div>
+              <div onClick={() => this.props.seekToTime(30)}>Seek to 30</div> */}
             </div>
 
           </div>

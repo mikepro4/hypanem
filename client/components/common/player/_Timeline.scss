@@ -1,0 +1,15 @@
+.video-player-timeline {
+  background: $black;
+  display: flex;
+
+  .player-time-controls {
+    flex-shrink: 0;
+    width: 150px;
+  }
+
+  .player-timeline {
+    height: 45px;
+    flex-grow: 1;
+    background: $gray3;
+  }
+}

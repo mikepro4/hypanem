@@ -10,6 +10,7 @@ function mapStateToProps(state) {
   return {
     videos: state.videos,
     singleVideo: state.videos.singleVideo,
+    player: state.player
   };
 }
 

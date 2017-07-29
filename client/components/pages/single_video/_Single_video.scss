@@ -4,6 +4,7 @@
   .single-video-main {
     flex-grow: 1;
     overflow-y: auto;
+    @include webkit-scrollbar-dark();
 
     .single-video-container {
       max-width: 920px;
@@ -133,8 +134,11 @@
 
 
       .single-video-player {
-        background: $black;
-        height: 510px;
+        height: 3000px;
+
+        .video-container {
+          background: $black;
+        }
       }
     }
   }
@@ -142,6 +146,7 @@
   .single-video-sidebar {
     flex-shrink: 0;
     width: 400px;
-    border-left: 1px solid $dark-gray2;
+    // border-left: 1px solid $dark-gray2;
+    background: $black;
   }
 }

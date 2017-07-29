@@ -35,8 +35,8 @@ export function loadVideosFactory() {
               }
             },
           }),
-          get: () => Videos.findByUser(finalUserId).fetch(),
-          onChange: () => component.showNotification('videos collection changed')
+          get: () => Videos.findByUser(finalUserId).fetch()
+          // onChange: () => component.showNotification('videos collection changed')
         },
       });
     };
@@ -64,7 +64,7 @@ export function deleteVideoFactory(id) {
   };
 }
 
-export function loadSingleVideo(id) {
+export function loadSingleVideo(id, successCallBack) {
   return dispatch => {
     dispatch(clearLoadedVideo())
     dispatch(clearLoadedChannel())
@@ -79,6 +79,9 @@ export function loadSingleVideo(id) {
             dispatch(loadVideo(data))
             dispatch(push(`/video/${id}`));
             dispatch(loadChannelData(data[0].channelId))
+            if(successCallBack) {
+              return(successCallBack())
+            }
           },
         },
       },
