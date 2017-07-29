@@ -7,6 +7,8 @@ import * as _ from 'lodash'
 import Person from '../../../components/common/person/Person';
 import Player from '../../../containers/common/player/Player';
 import Timeline from '../../../containers/common/player/Timeline';
+import PlayerControls from '../../../containers/common/player/Player_controls';
+import { formatTime } from '../../../utils/time_formatter'
 
 export default class SingleVideo extends React.Component {
   componentDidMount() {
@@ -86,32 +88,26 @@ export default class SingleVideo extends React.Component {
 
                 <div className="player-time-controls">
                   <div className="player-controls-container">
-                    <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
-                    <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
-                    <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
+                    <PlayerControls
+                      player={this.props.player}
+                    />
                   </div>
-
                   <div className="player-time-container">
-
-                  {this.props.player ? <div>{this.props.player.currentTime} / {this.props.player.duration}</div> : ""}
-
+                    {this.props.player ? <div>{formatTime(this.props.player.currentTime)} / {formatTime(Number(this.props.player.duration))}</div> : ""}
                   </div>
                 </div>
 
                 <div className="player-timeline">
-                  <Timeline {...this.props} />
+                  <Timeline
+                    player={this.props.player}
+                  />
                 </div>
 
               </div>
-              {/* <div onClick={() => this.props.updatePlayerStatus('play')}>Play</div>
-              <div onClick={() => this.props.updatePlayerStatus('pause')}>Pause</div>
-              <div onClick={() => this.props.updatePlayerStatus('stop')}>Stop</div>
-              <div onClick={() => this.props.seekToTime(30)}>Seek to 30</div> */}
             </div>
-
           </div>
         </div>
-        <div className="single-video-sidebar">sidebar</div>
+        <div className="single-video-sidebar"></div>
       </div>
     );
   }
