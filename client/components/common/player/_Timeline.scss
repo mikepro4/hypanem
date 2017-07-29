@@ -25,6 +25,7 @@
       margin: 0 0 0 5px;
 
       .time-container {
+
         .current-time {
           margin: 0 5px 0 0
         }
@@ -44,20 +45,69 @@
   }
 
   .player-timeline {
-    height: 42px;
+    height: 40px;
     flex-grow: 1;
-    padding: 0 20px 0 0;
   }
 
   .timeline-container {
     position: relative;
+    width: 735px;
+    cursor: pointer;
+
+
+    .progress-bar-wrapper {
+      top: -5px;
+      left: 0;
+      bottom: -5px;
+      position: absolute;
+      z-index: 1;
+      width: 735px;
+
+      .progress-bar {
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: $dark-gray2;
+        z-index: 1;
+        width: 0;
+        min-width: 1px !important;
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+
+      .progress-bar-hover {
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: $gray1;
+        position: absolute;
+        z-index: 2;
+        width: 0;
+        opacity: 0.15;
+      }
+    }
+
+    .cursor {
+      bottom: -5px;
+      // border-left: 1px solid $gray5;
+      position: absolute;
+      width: 1px;
+      top: -5px;
+      z-index: 3;
+      opacity: 0.4;
+
+    }
 
     .time-list {
       display: flex;
       height: 35px;
       align-items: center;
+      position: relative;
       // position: absolute;
-      z-index: 1;
+      z-index: 2;
       // top: 0;
       // right: 20px;
       // left: 0;
@@ -77,6 +127,10 @@
         font-family: "Roboto", sans-serif;
         position: relative;
 
+        span {
+          margin: 0 0 0 3px;
+        }
+
         // &:before {
         //   content: "●";
         //   position: absolute;
@@ -85,6 +139,12 @@
         //   font-size: 7px;
         //   color: $dark-gray5;
         // }
+
+        &:first-child {
+          span {
+            margin: 0;
+          }
+        }
 
         &:last-child {
           margin: 0;

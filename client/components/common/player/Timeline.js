@@ -99,10 +99,67 @@ export default class Timeline extends React.Component {
     }
   }
 
+  calculateWidth(event) {
+    const relX = event.pageX - (this.refs.timeline.offsetLeft + this.refs.timeline.offsetParent.offsetLeft)
+    const progressBarPercent = relX * 100 / this.refs.timeline.getBoundingClientRect().width
+    const seekSeconds = progressBarPercent * this.props.player.duration / 100
+    return seekSeconds
+  }
+
+  onMouseMove(event) {
+    this.setState({
+      hoverWidth: this.calculateWidth(event) * 100 / this.props.player.duration + '%'
+    })
+  }
+
+  onMouseLeave() {
+    this.setState({
+      hoverWidth: 0
+    })
+  }
+
+  handlePorgressBarClick(event) {
+    const relX = event.pageX - (this.refs.timeline.offsetLeft + this.refs.timeline.offsetParent.offsetLeft)
+    const progressBarPercent = relX * 100 / this.refs.timeline.getBoundingClientRect().width
+    const seekSeconds = progressBarPercent * this.props.player.duration / 100
+    this.props.seekToTime(seekSeconds)
+  }
+
   render() {
 
+
+    const progressBarWidth = {
+      width: this.props.player.currentTime * 100 / this.props.player.duration + '%'
+    }
+
+    const cursor = {
+      left: this.props.player.currentTime * 100 / this.props.player.duration + '%'
+    }
+
+    const progressBarHoverWidth = {
+      width: this.state.hoverWidth
+    }
+
+    let progressBarClasses = classNames({
+      'progress-bar': true,
+      'active': this.props.player.status === 'playing' || this.props.player.status === 'paused'
+    })
+
     return (
-      <div className="timeline-container" ref="timeline">
+      <div
+        className="timeline-container"
+        ref="timeline"
+        onMouseMove={this.onMouseMove.bind(this)}
+        onMouseLeave ={this.onMouseLeave.bind(this)}
+        onClick={this.handlePorgressBarClick.bind(this)}
+      >
+        <div className="progress-bar-wrapper">
+          <div className={progressBarClasses} style={progressBarWidth}></div>
+          <div className="progress-bar-hover" style={progressBarHoverWidth}></div>
+        </div>
+
+        <div className="cursor playing" style={cursor} ></div>
+
         <ul className="time-list">
           {this.state.times}
         </ul>
