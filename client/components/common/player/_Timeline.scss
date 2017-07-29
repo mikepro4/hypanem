@@ -4,11 +4,92 @@
 
   .player-time-controls {
     flex-shrink: 0;
-    width: 150px;
+    width: 165px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -3px;
+
+    .player-controls-container {
+      margin: 0 0 0 5px;
+      position: relative;
+
+      .pt-button::before {
+        color: $white;
+      }
+    }
+
+    .player-time-container {
+      font-size: 14px;
+      font-family: "Roboto", sans-serif;
+      margin: 0 0 0 5px;
+
+      .time-container {
+        .current-time {
+          margin: 0 5px 0 0
+        }
+        .time-divider {
+          color: $white;
+          opacity: 0.4;
+          font-weight: 300;
+        }
+        .duration-time {
+          margin: 0 0 0 5px;
+          color: $white;
+          opacity: 0.4;
+          font-weight: 300;
+        }
+      }
+    }
   }
 
   .player-timeline {
-    height: 45px;
+    height: 42px;
     flex-grow: 1;
+    padding: 0 20px 0 0;
+  }
+
+  .timeline-container {
+    position: relative;
+
+    .time-list {
+      display: flex;
+      height: 35px;
+      align-items: center;
+      // position: absolute;
+      z-index: 1;
+      // top: 0;
+      // right: 20px;
+      // left: 0;
+      // width: 100%;
+      // z-index: 1;
+      color: $white;
+      opacity: .4;
+      font-weight: 300;
+      user-select: none;
+
+      .time {
+        float: left;
+        width: 35px;
+        font-size: 11px;
+        margin-right: 35px;
+        font-size: 10px;
+        font-family: "Roboto", sans-serif;
+        position: relative;
+
+        // &:before {
+        //   content: "●";
+        //   position: absolute;
+        //   right: -17px;
+        //   top: 2px;
+        //   font-size: 7px;
+        //   color: $dark-gray5;
+        // }
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
   }
 }

@@ -93,7 +93,11 @@ export default class SingleVideo extends React.Component {
                     />
                   </div>
                   <div className="player-time-container">
-                    {this.props.player ? <div>{formatTime(this.props.player.currentTime)} / {formatTime(Number(this.props.player.duration))}</div> : ""}
+                    {this.props.player ? <div className="time-container">
+                      <span className="current-time">{formatTime(this.props.player.currentTime)}</span>
+                      <span className="time-divider">/</span>
+                      <span className="duration-time">{formatTime(Number(this.props.player.duration))}</span>
+                    </div> : ""}
                   </div>
                 </div>
 

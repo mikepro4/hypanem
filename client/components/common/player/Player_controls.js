@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash'
+import { Button } from "@blueprintjs/core";
 
 export default class PlayerControls extends React.Component {
   onPlay() {
@@ -62,19 +63,19 @@ export default class PlayerControls extends React.Component {
       <ul className='player-controls-container'>
 
         {Play ?
-          <li className='play'><button onClick={this.onPlay.bind(this)} className='button'>Play</button></li>
+          <li className='play'><Button onClick={this.onPlay.bind(this)} iconName="play" className="pt-minimal"></Button></li>
           : ''
         }
 
         {Pause ?
-          <li className='pause'><button onClick={this.onPause.bind(this)} className='button'>Pause</button></li>
+          <li className='pause'><Button onClick={this.onPause.bind(this)} iconName="pause" className="pt-minimal"></Button></li>
           : ''
         }
 
-        {Stop ?
+        {/* {Stop ?
           <li className='stop'><button onClick={this.onStop.bind(this)} className='button'>Stop</button></li>
           : ''
-        }
+        } */}
 
       </ul>
     );

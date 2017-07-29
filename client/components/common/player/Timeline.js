@@ -69,7 +69,7 @@ export default class Timeline extends React.Component {
         this.setState({
           times: timeArray.map((time,i) => {
             return (
-              <li className='time' key={i}>
+              <li className="time" key={i}>
                 <span>{formatTime(time)}</span>
               </li>
             )
@@ -87,7 +87,7 @@ export default class Timeline extends React.Component {
     if(this.refs.timeline) {
       const containerWIdth = this.refs.timeline.getBoundingClientRect().width
       // console.log(containerWIdth)
-      const timesAmount = Math.floor(containerWIdth/25/2)
+      const timesAmount = Math.floor(containerWIdth/35/2)
       const timeInterval = Math.floor(this.props.player.duration / timesAmount)
 
       const secondsArray = Array.apply(null, {length: this.props.player.duration}).map(Number.call, Number)
@@ -103,7 +103,7 @@ export default class Timeline extends React.Component {
 
     return (
       <div className="timeline-container" ref="timeline">
-        <ul className='time_list'>
+        <ul className="time-list">
           {this.state.times}
         </ul>
       </div>
