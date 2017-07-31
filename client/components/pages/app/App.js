@@ -44,7 +44,7 @@ class App extends Component {
 
           <Toaster position={Position.BOTTOM_LEFT} ref="toaster" />
 
-          <Helmet title="Главная – Hype DNA" />
+          <Helmet title="" />
 
           <AppHeader {...this.props} />
 

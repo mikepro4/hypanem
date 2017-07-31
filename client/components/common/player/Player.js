@@ -82,6 +82,10 @@ export default class YoutubePlayer extends React.Component {
     }
   }
 
+  onEnd() {
+    this.stopVideo();
+  }
+
   onPlay(event) {
     console.log('onPlay')
     this.setState({ 'timeInterval': null })
@@ -145,6 +149,7 @@ export default class YoutubePlayer extends React.Component {
           onPlay={this.onPlay.bind(this)}
           onStop={this.onStop.bind(this)}
           onPause={this.onPause.bind(this)}
+          onEnd={this.onEnd.bind(this)}
           onStateChange={this.onStateChange.bind(this)}
         />
       </div>

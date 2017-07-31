@@ -90,9 +90,6 @@ export default class Timeline extends React.Component {
       const timesAmount = (containerWIdth/35/2)
       const timeInterval = Number(this.props.player.duration / timesAmount).toFixed(0)
 
-      console.log(timeInterval)
-
-
       const secondsArray = Array.apply(null, {length: this.props.player.duration}).map(Number.call, Number)
 
       const filteredSeconds = _.filter(secondsArray, (number) => {
@@ -110,12 +107,14 @@ export default class Timeline extends React.Component {
   }
 
   onMouseMove(event) {
+    this.props.updateTimelineHoverTime(this.calculateWidth(event));
     this.setState({
       hoverWidth: this.calculateWidth(event) * 100 / this.props.player.duration + '%'
     })
   }
 
   onMouseLeave() {
+    this.props.updateTimelineHoverTime(null);
     this.setState({
       hoverWidth: 0
     })
@@ -143,6 +142,10 @@ export default class Timeline extends React.Component {
       width: this.state.hoverWidth
     }
 
+    const hoverTimeOffset = {
+      left: this.state.hoverWidth
+    }
+
     let progressBarClasses = classNames({
       'progress-bar': true,
       'active': this.props.player.status === 'playing' || this.props.player.status === 'paused'
@@ -160,6 +163,14 @@ export default class Timeline extends React.Component {
           <div className={progressBarClasses} style={progressBarWidth}></div>
           <div className="progress-bar-hover" style={progressBarHoverWidth}></div>
         </div>
+
+        {this.props.time.timelineHoverTime ? <div className="hover-time" style={hoverTimeOffset}>
+          <span className="time-container">
+            {formatTime(this.props.time.timelineHoverTime)}
+          </span>
+        </div>: ""}
+
+
 
         <div className="cursor playing" style={cursor} ></div>
 

@@ -16,3 +16,7 @@ export const UPDATE_TIME = 'app/UPDATE_TIME'
 export const UPDATE_PLAYER_VIDEO_ID = 'app/UPDATE_PLAYER_VIDEO_ID'
 export const RESET_VIDEO = 'app/RESET_VIDEO'
 export const SEEK_TO_TIME = 'app/SEEK_TO_TIME'
+
+
+// Time Selection, ranges, hover
+export const TIMELINE_HOVER_TIME = 'app/TIMELINE_HOVER_TIME'
